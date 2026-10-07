@@ -12,6 +12,14 @@ printf '/*\n  Content-Security-Policy: frame-ancestors https://kelebeksinav.org 
 # 3) Kelebek logosu
 curl -fsSL https://kelebeksinav.org/amblem.png -o public/images/kelebek.png
 
+# 3b) Site simgesi (tarayıcı sekmesi ve Google sonuçları): BentoPDF'in simgesi yerine Kelebek amblemi.
+#     İndirilemezse derleme durmaz; eski simge kalır.
+simge() { curl -fsSL "https://kelebeksinav.org/$1" -o "/tmp/kb-simge" && mv /tmp/kb-simge "$2" || echo "Uyarı: $1 indirilemedi, eski simge kaldı."; }
+simge favicon.ico public/favicon.ico
+simge favicon-192.png public/images/favicon-192x192.png
+simge logo-512.png public/images/favicon-512x512.png
+simge apple-touch-icon.png public/images/apple-touch-icon.png
+
 # 4) BentoPDF'i derle (ayarlar Cloudflare'deki ortam değişkenlerinden gelir)
 npm run build
 

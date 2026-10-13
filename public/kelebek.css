@@ -136,3 +136,62 @@ html.kb-gomulu body { background-color: transparent !important; }
 
 /* dil seçici gereksiz (site Türkçe); İngilizce "Sık Sorulan Sorular" penceresi gizli */
 #simple-mode-lang-switcher, #faq-open-btn, #faq-modal { display: none !important; }
+
+/* ============================================================
+   Gece görünümü: Kelebek'te "Gece" teması seçiliyken (html.kb-gece)
+   PDF araçları da koyu olur. Renkler Kelebek'in Gece temasıyla aynı.
+   ============================================================ */
+html.kb-gece:root {
+  color-scheme: dark;
+  --color-gray-950: #0d1117;
+  --color-gray-900: #11151c;
+  --color-gray-850: #161b24;
+  --color-gray-800: #1b212b;
+  --color-gray-750: #202733;
+  --color-gray-700: #2b3443;
+  --color-gray-600: #333d4d;
+  --color-gray-500: #6b7a90;
+  --color-gray-400: #9fb0c6;
+  --color-gray-300: #c3cfdf;
+  --color-gray-200: #dbe3ee;
+  --color-gray-100: #e9eef6;
+  --color-gray-50: #f4f7fb;
+}
+html.kb-gece body { background-color: #11151c !important; color: #e9eef6 !important; }
+html.kb-gece.kb-gomulu body { background-color: transparent !important; }
+html.kb-gece .text-white, html.kb-gece .hover\:text-white:hover { color: #e9eef6; }
+html.kb-gece .tool-card { background-color: #1b212b !important; border-color: #333d4d !important; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
+html.kb-gece .tool-card:hover { border-color: #5b8def !important; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45) !important; }
+html.kb-gece .category-header, html.kb-gece .category-header * { color: #e9eef6 !important; }
+html.kb-gece .compact-mode .tool-card:hover { background-color: #232a36 !important; }
+html.kb-gece .pdf-panel { background-color: #1b212b !important; border-color: #333d4d !important; }
+html.kb-gece .pill { background-color: #232a36 !important; color: #c3cfdf !important; }
+html.kb-gece .shortcut-key { background-color: #232a36 !important; color: #e9eef6 !important; }
+html.kb-gece .legal-content h2 { color: #e9eef6 !important; }
+html.kb-gece #shortcuts-list::-webkit-scrollbar-track { background: #11151c !important; }
+html.kb-gece input, html.kb-gece textarea, html.kb-gece select { color: #e9eef6; }
+html.kb-gece input::placeholder, html.kb-gece textarea::placeholder { color: #6b7a90; }
+html.kb-gece ::-webkit-scrollbar-track { background: #11151c; }
+html.kb-gece ::-webkit-scrollbar-thumb { background: #3a4558; }
+/* vurgu yazıları koyu zeminde açık tonda */
+html.kb-gece .text-indigo-100, html.kb-gece .text-indigo-200, html.kb-gece .text-indigo-300, html.kb-gece .text-indigo-400 { color: #a5b4fc !important; }
+html.kb-gece .text-blue-100, html.kb-gece .text-blue-200, html.kb-gece .text-blue-300, html.kb-gece .text-blue-400 { color: #93c5fd !important; }
+html.kb-gece .text-sky-200, html.kb-gece .text-sky-300, html.kb-gece .text-sky-400, html.kb-gece .text-cyan-300, html.kb-gece .text-cyan-400 { color: #7dd3fc !important; }
+html.kb-gece .text-yellow-100, html.kb-gece .text-yellow-200, html.kb-gece .text-yellow-300, html.kb-gece .text-yellow-400,
+html.kb-gece .text-amber-200, html.kb-gece .text-amber-300, html.kb-gece .text-amber-400 { color: #fcd34d !important; }
+html.kb-gece .text-orange-300, html.kb-gece .text-orange-400 { color: #fdba74 !important; }
+html.kb-gece .text-green-200, html.kb-gece .text-green-300, html.kb-gece .text-green-400, html.kb-gece .text-emerald-300, html.kb-gece .text-emerald-400 { color: #6ee7b7 !important; }
+html.kb-gece .text-red-200, html.kb-gece .text-red-300, html.kb-gece .text-red-400 { color: #fca5a5 !important; }
+html.kb-gece .text-purple-300, html.kb-gece .text-purple-400, html.kb-gece .text-violet-300, html.kb-gece .text-violet-400 { color: #c4b5fd !important; }
+html.kb-gece .text-pink-300, html.kb-gece .text-pink-400 { color: #f9a8d4 !important; }
+/* bilgi/uyarı kutuları koyu tonda */
+html.kb-gece [class*="bg-indigo-900"], html.kb-gece [class*="bg-indigo-950"], html.kb-gece [class*="bg-blue-900"], html.kb-gece [class*="bg-blue-950"] { background-color: #1c2541 !important; border-color: #33427a !important; }
+html.kb-gece [class*="bg-yellow-900"], html.kb-gece [class*="bg-amber-900"], html.kb-gece [class*="bg-yellow-950"], html.kb-gece [class*="bg-amber-950"] { background-color: #2e2614 !important; border-color: #6b5420 !important; }
+html.kb-gece [class*="bg-red-900"], html.kb-gece [class*="bg-red-950"] { background-color: #2f1a1e !important; border-color: #6e2f37 !important; }
+html.kb-gece [class*="bg-green-900"], html.kb-gece [class*="bg-green-950"], html.kb-gece [class*="bg-emerald-900"] { background-color: #142a22 !important; border-color: #2a5c47 !important; }
+html.kb-gece .fixed.inset-0[class*="bg-black"], html.kb-gece .fixed.inset-0[class*="bg-gray-900"] { background-color: rgba(0, 0, 0, 0.6) !important; }
+/* favori bölümü */
+html.kb-gece .kb-favori-bas { color: #e9eef6; }
+html.kb-gece .kb-favori-bos { background: #1b212b; border-color: #3a4558; color: #9fb0c6; }
+html.kb-gece .kb-yildiz { color: #6b7a90; }
+html.kb-gece .kb-yildiz:hover { background: #232a36; }

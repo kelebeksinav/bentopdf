@@ -13,6 +13,21 @@
   try { gomulu = window.top !== window.self; } catch (e) { gomulu = true; }
   if (gomulu) document.documentElement.classList.add('kb-gomulu');
 
+  /* ---------------- 1a) Gece görünümü ----------------
+     Kelebek'te Gece teması seçiliyse PDF araçları da koyu görünür (kelebek.css: html.kb-gece).
+     İlk açılışta adresteki "kbt=g" işaretinden, araçlar arasında gezinirken bu sekmenin
+     hafızasından, tema değişince de Kelebek'in gönderdiği mesajdan okunur. */
+  function geceUygula(g) {
+    document.documentElement.classList.toggle('kb-gece', !!g);
+    try { sessionStorage.setItem('kbGece', g ? '1' : '0'); } catch (e) {}
+  }
+  if (gomulu) {
+    var ilkGece = null;
+    try { var kbt = new URLSearchParams(location.search).get('kbt'); if (kbt) ilkGece = (kbt === 'g'); } catch (e) {}
+    if (ilkGece === null) { try { ilkGece = sessionStorage.getItem('kbGece') === '1'; } catch (e) { ilkGece = false; } }
+    geceUygula(ilkGece);
+  }
+
   /* ---------------- 1b) Çift yükleme olmasın ----------------
      BentoPDF'in hizmet çalışanı (service worker) ilk açılışta ve her güncellemede
      sayfayı kendiliğinden bir kez daha yüklüyor, güncellemede de İngilizce
@@ -937,7 +952,10 @@
     yildizlariGuncelle();
   }
   window.addEventListener('message', function (e) {
-    if (KELEBEK.indexOf(e.origin) < 0 || !e.data || e.data.kb !== 'favori') return;
+    if (KELEBEK.indexOf(e.origin) < 0 || !e.data) return;
+    if (e.data.kb === 'tema') { geceUygula(!!e.data.gece); return; }
+    if (e.data.kb !== 'favori') return;
+    if (typeof e.data.gece === 'boolean') geceUygula(e.data.gece);
     uye = !!e.data.uye;
     favoriler = Array.isArray(e.data.liste) ? e.data.liste.filter(function (x) { return typeof x === 'string'; }).slice(0, 40) : [];
     favoriHazir = true;

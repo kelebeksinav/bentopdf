@@ -819,19 +819,1139 @@
 "or drag and drop": "ya da sürükleyip bırakın",
 "selected)": "seçili)",
 "Legal": "Legal",
-"Letter (8.5 × 11 in)": "Letter (8,5 × 11 inç)"
+"Letter (8.5 × 11 in)": "Letter (8,5 × 11 inç)",
+/* 20 Ekim 2026: araçların içinde sabit yazılmış İngilizce iletiler */
+"A template with this name already exists.": "Bu adla bir şablon zaten var.",
+"Add Blank Page": "Boş Sayfa Ekle",
+"Add a cryptographic digital signature using X.509 certificates.": "X.509 sertifikasıyla şifreli dijital imza ekleyin.",
+"Add a text box": "Metin kutusu ekle",
+"Add an RFC 3161 document timestamp using a trusted TSA server.": "Güvenilir bir TSA sunucusuyla RFC 3161 belge zaman damgası ekleyin.",
+"Add at least one node to run the workflow.": "İş akışını çalıştırmak için en az bir düğüm ekleyin.",
+"Add child": "Alt öğe ekle",
+"Add child layer": "Alt katman ekle",
+"Add image stamps to your PDF using the annotation toolbar.": "Not araç çubuğuyla PDF'inize resim damgası ekleyin.",
+"Add sequential Bates numbers across one or more PDF files.": "Bir ya da birden çok PDF'e sıralı Bates numarası ekleyin.",
+"Add text to the top and bottom of pages.": "Sayfaların üstüne ve altına yazı ekleyin.",
+"Add, edit, import, delete and extract PDF bookmarks.": "PDF yer imlerini ekleyin, düzenleyin, içe aktarın, silin ve çıkarın.",
+"Adding header & footer...": "Üst ve alt bilgi ekleniyor...",
+"Adding page numbers...": "Sayfa numaraları ekleniyor...",
+"Adding watermark...": "Filigran ekleniyor...",
+"Adjust Colors": "Renkleri Ayarla",
+"Align Objects": "Nesneleri Hizala",
+"Alignment": "Hizalama",
+"All files repaired successfully!": "Bütün dosyalar onarıldı.",
+"Alternate Merge": "Sayfaları Karıştır & Birleştir",
+"Alternating and mixing pages...": "Sayfalar karıştırılıyor...",
+"An error occurred during cropping.": "Kırpma sırasında bir hata oluştu.",
+"An error occurred while combining pages.": "Sayfalar birleştirilirken bir hata oluştu.",
+"An error occurred while creating the N-Up PDF.": "N'li PDF oluşturulurken bir hata oluştu.",
+"An error occurred while creating the booklet.": "Kitapçık oluşturulurken bir hata oluştu.",
+"An error occurred while dividing the PDF.": "PDF bölünürken bir hata oluştu.",
+"An error occurred while standardizing pages.": "Sayfalar eşitlenirken bir hata oluştu.",
+"An error occurred while trying to remove metadata.": "Üst veri kaldırılırken bir hata oluştu.",
+"An owner password is required when setting permissions": "İzinleri ayarlamak için sahip şifresi gerekir",
+"An unexpected error occurred during the repair process.": "Onarım sırasında beklenmeyen bir hata oluştu.",
+"An unexpected error occurred in the merge worker.": "Birleştirme sırasında beklenmeyen bir hata oluştu.",
+"Analyze page size, orientation, and units.": "Sayfa boyutunu, yönünü ve birimlerini inceleyin.",
+"Analyzing full PDF metadata...": "PDF üst verisi inceleniyor...",
+"Analyzing signatures...": "İmzalar inceleniyor...",
+"Annotate, highlight, redact, comment, add shapes/images, search, and view PDFs.": "PDF'leri görüntüleyin; not, vurgu, karartma, yorum, şekil/resim ekleyin, arayın.",
+"Annotations removed successfully!": "Notlar kaldırıldı.",
+"Apply PDF page labels with Roman numerals, prefixes, and custom starts.": "Roma rakamı, ön ek ve özel başlangıçla PDF sayfa etiketleri uygulayın.",
+"Applying Bates numbers...": "Bates numaraları ekleniyor...",
+"Applying color adjustments...": "Renk ayarları uygulanıyor...",
+"Applying crop...": "Kırpılıyor...",
+"Applying redactions...": "Karartmalar uygulanıyor...",
+"Applying rotations...": "Döndürmeler uygulanıyor...",
+"Applying scanner effect...": "Tarayıcı efekti uygulanıyor...",
+"Applying timestamp...": "Zaman damgası ekleniyor...",
+"Arrange multiple pages onto a single sheet.": "Birden çok sayfayı tek kâğıda dizin.",
+"At least two valid PDFs are required.": "En az iki geçerli PDF gerekir.",
+"Attaching files to PDF...": "Dosyalar PDF'e ekleniyor...",
+"Attachments updated successfully!": "Ekler güncellendi.",
+"Automatically detect and delete blank pages.": "Boş sayfaları bulup kendiliğinden silin.",
+"Automatically straighten tilted scanned pages using OpenCV.": "Eğik taranmış sayfaları kendiliğinden düzeltin (OpenCV).",
+"Background color changed successfully!": "Arka plan rengi değiştirildi.",
+"Booklet": "Kitapçık",
+"Build custom PDF processing pipelines with a visual node editor.": "Görsel düzenleyiciyle kendi PDF iş akışınızı kurun.",
+"Building new PDF...": "Yeni PDF hazırlanıyor...",
+"Building page pairing model...": "Sayfa eşleştirmesi hazırlanıyor...",
+"Cannot access viewer controls. Please use the Download button in the PDF viewer toolbar above.": "Görüntüleyici denetimlerine erişilemiyor. Lütfen yukarıdaki PDF görüntüleyici çubuğundaki İndir düğmesini kullanın.",
+"Cannot delete all pages.": "Bütün sayfalar silinemez.",
+"Certificate (.pfx, .p12, .pem)": "Sertifika (.pfx, .p12, .pem)",
+"Certificate unlocked": "Sertifika açıldı",
+"Change the author, title, and other properties.": "Yazar, başlık ve öteki özellikleri değiştirin.",
+"Change the background color of your PDF.": "PDF'inizin arka plan rengini değiştirin.",
+"Change the color of text in your PDF.": "PDF'inizdeki yazının rengini değiştirin.",
+"Changing background color...": "Arka plan rengi değiştiriliyor...",
+"Changing text color...": "Yazı rengi değiştiriliyor...",
+"Click any paragraph and edit it in place with live reflow, fonts, and styling.": "Herhangi bir paragrafa dokunup yerinde düzenleyin; yazı tipi ve biçim korunur.",
+"Close (Esc)": "Kapat (Esc)",
+"Color adjustments applied successfully!": "Renk ayarları uygulandı.",
+"Colors inverted successfully!": "Renkler ters çevrildi.",
+"Combine multiple PDFs into one file.": "Birden çok PDF'i tek dosyada birleştirin.",
+"Combine multiple PDFs into one file. Preserves Bookmarks.": "Birden çok PDF'i tek dosyada birleştirin. Yer imlerini korur.",
+"Combine to Single Page": "Tek Sayfada Birleştir",
+"Combining pages...": "Sayfalar birleştiriliyor...",
+"Comic Archives": "Çizgi roman arşivleri",
+"Compare two PDFs side by side.": "İki PDF'i yan yana karşılaştırın.",
+"Complete": "Tamamlandı",
+"Compress": "Sıkıştır",
+"Compressing multiple PDFs...": "PDF'ler sıkıştırılıyor...",
+"Convert Adobe Photoshop (PSD) files to PDF. Multiple files supported.": "Adobe Photoshop (PSD) dosyalarını PDF'e dönüştürün. Birden çok dosya olur.",
+"Convert Apple Pages documents to PDF.": "Apple Pages belgelerini PDF'e dönüştürün.",
+"Convert CSV (Comma-Separated Values) spreadsheets to PDF.": "CSV tablolarını PDF'e dönüştürün.",
+"Convert EPUB e-books to PDF.": "EPUB e-kitaplarını PDF'e dönüştürün.",
+"Convert Excel spreadsheets (XLSX, XLS, ODS) to PDF.": "Excel tablolarını (XLSX, XLS, ODS) PDF'e dönüştürün.",
+"Convert FictionBook (FB2) e-books to PDF.": "FictionBook (FB2) e-kitaplarını PDF'e dönüştürün.",
+"Convert JPG, PNG, BMP, GIF, TIFF, PNM, PGM, PBM, PPM, PAM, JXR, JPX, JP2, PSD, SVG, HEIC, WebP to PDF.": "JPG, PNG, BMP, GIF, TIFF, PNM, PGM, PBM, PPM, PAM, JXR, JPX, JP2, PSD, SVG, HEIC, WebP dosyalarını PDF'e dönüştürün.",
+"Convert JSON files to PDF format.": "JSON dosyalarını PDF'e dönüştürün.",
+"Convert MOBI e-books to PDF.": "MOBI e-kitaplarını PDF'e dönüştürün.",
+"Convert Markdown to PDF with live preview and syntax highlighting.": "Markdown'ı canlı önizlemeyle PDF'e dönüştürün.",
+"Convert Microsoft Publisher (PUB) to PDF.": "Microsoft Publisher (PUB) dosyalarını PDF'e dönüştürün.",
+"Convert Microsoft Visio (VSD, VSDX) to PDF.": "Microsoft Visio (VSD, VSDX) dosyalarını PDF'e dönüştürün.",
+"Convert ODT (OpenDocument Text) files to PDF.": "ODT (OpenDocument metin) dosyalarını PDF'e dönüştürün.",
+"Convert OpenDocument Graphics (ODG) to PDF.": "OpenDocument çizim (ODG) dosyalarını PDF'e dönüştürün.",
+"Convert OpenDocument Presentation (ODP) to PDF.": "OpenDocument sunu (ODP) dosyalarını PDF'e dönüştürün.",
+"Convert OpenDocument Spreadsheet (ODS) to PDF.": "OpenDocument tablo (ODS) dosyalarını PDF'e dönüştürün.",
+"Convert PDF files to JSON format.": "PDF dosyalarını JSON biçimine dönüştürün.",
+"Convert PDF files to editable Word documents.": "PDF dosyalarını düzenlenebilir Word belgelerine dönüştürün.",
+"Convert PDF text and tables to Markdown format.": "PDF'teki yazı ve tabloları Markdown'a dönüştürün.",
+"Convert PDF to PDF/A for long-term archiving.": "Uzun süreli arşiv için PDF'i PDF/A'ya dönüştürün.",
+"Convert PDF to image-based PDF. Flatten layers and remove selectable text.": "PDF'i resim tabanlı PDF'e çevirin. Katmanlar düzleşir, seçilebilir yazı kalkar.",
+"Convert PowerPoint presentations (PPTX, PPT, ODP) to PDF.": "PowerPoint sunularını (PPTX, PPT, ODP) PDF'e dönüştürün.",
+"Convert RTF (Rich Text Format) documents to PDF.": "RTF belgelerini PDF'e dönüştürün.",
+"Convert WPS Office documents to PDF.": "WPS Office belgelerini PDF'e dönüştürün.",
+"Convert Word documents (DOCX, DOC, ODT) to PDF.": "Word belgelerini (DOCX, DOC, ODT) PDF'e dönüştürün.",
+"Convert WordPerfect documents (WPD) to PDF.": "WordPerfect (WPD) belgelerini PDF'e dönüştürün.",
+"Convert XML documents to PDF.": "XML belgelerini PDF'e dönüştürün.",
+"Convert XPS/OXPS documents to PDF.": "XPS/OXPS belgelerini PDF'e dönüştürün.",
+"Convert a PDF into a CBZ (Comic Book Archive) file for comic readers.": "PDF'i çizgi roman okuyucuları için CBZ dosyasına dönüştürün.",
+"Convert a plain text file into a PDF.": "Düz metin dosyasını PDF'e dönüştürün.",
+"Convert all colors to black and white.": "Bütün renkleri siyah-beyaza çevirin.",
+"Convert all fonts to vector outlines for consistent rendering.": "Her yerde aynı görünsün diye yazı tiplerini çizgiye dönüştürün.",
+"Convert comic book archives (CBZ/CBR) to PDF.": "Çizgi roman arşivlerini (CBZ/CBR) PDF'e dönüştürün.",
+"Convert each PDF page into a BMP image.": "Her PDF sayfasını BMP resmine dönüştürün.",
+"Convert each PDF page into a JPG image.": "Her PDF sayfasını JPG resmine dönüştürün.",
+"Convert each PDF page into a PNG image.": "Her PDF sayfasını PNG resmine dönüştürün.",
+"Convert each PDF page into a TIFF image.": "Her PDF sayfasını TIFF resmine dönüştürün.",
+"Convert each PDF page into a WebP image.": "Her PDF sayfasını WebP resmine dönüştürün.",
+"Convert each PDF page into a scalable vector graphic.": "Her PDF sayfasını ölçeklenebilir vektör çizime (SVG) dönüştürün.",
+"Convert email files (EML, MSG) to PDF format.": "E-posta dosyalarını (EML, MSG) PDF'e dönüştürün.",
+"Converting BMP to PDF...": "BMP, PDF'e dönüştürülüyor...",
+"Converting HEIC to PDF...": "HEIC, PDF'e dönüştürülüyor...",
+"Converting TIFF to PDF...": "TIFF, PDF'e dönüştürülüyor...",
+"Converting emails...": "E-postalar dönüştürülüyor...",
+"Converting files...": "Dosyalar dönüştürülüyor...",
+"Converting fonts to outlines...": "Yazı tipleri çizgiye dönüştürülüyor...",
+"Converting images to PDF...": "Resimler PDF'e dönüştürülüyor...",
+"Converting multiple PDFs to PDF/A...": "PDF'ler PDF/A'ya dönüştürülüyor...",
+"Converting multiple RTF files to PDF...": "RTF dosyaları PDF'e dönüştürülüyor...",
+"Converting multiple files...": "Dosyalar dönüştürülüyor...",
+"Converting to Markdown...": "Markdown'a dönüştürülüyor...",
+"Converting to SVG...": "SVG'ye dönüştürülüyor...",
+"Converting to greyscale...": "Gri tonlamaya çevriliyor...",
+"Could not add page numbers.": "Sayfa numaraları eklenemedi.",
+"Could not apply rotations.": "Döndürmeler uygulanamadı.",
+"Could not change text color.": "Yazı rengi değiştirilemedi.",
+"Could not change the background color.": "Arka plan rengi değiştirilemedi.",
+"Could not create ZIP archive.": "ZIP arşivi oluşturulamadı.",
+"Could not detect blank pages.": "Boş sayfalar bulunamadı.",
+"Could not display the page.": "Sayfa gösterilemedi.",
+"Could not export comparison PDF.": "Karşılaştırma PDF'i indirilemedi.",
+"Could not export the signed PDF. Please try again.": "İmzalı PDF indirilemedi. Lütfen tekrar deneyin.",
+"Could not fully analyze the PDF. It may be corrupted or have an unusual structure.": "PDF tam incelenemedi. Bozuk olabilir ya da alışılmadık bir yapısı olabilir.",
+"Could not invert PDF colors.": "PDF renkleri ters çevrilemedi.",
+"Could not load PDF. It may be corrupt or password-protected.": "PDF yüklenemedi. Bozuk ya da şifreli olabilir.",
+"Could not load PDF. The file may be invalid, corrupted, or password-protected.": "PDF yüklenemedi. Dosya geçersiz, bozuk ya da şifreli olabilir.",
+"Could not load the PDF engine. Please refresh the page and try again.": "PDF motoru yüklenemedi. Lütfen sayfayı yenileyip tekrar deneyin.",
+"Could not remove annotations.": "Notlar kaldırılamadı.",
+"Could not remove blank pages.": "Boş sayfalar kaldırılamadı.",
+"Could not remove the redacted text from the document data, so the file was not downloaded.": "Karartılan yazı belge verisinden silinemediği için dosya indirilmedi.",
+"Could not reverse the PDF pages. Please check that your files are valid PDFs.": "PDF sayfaları ters çevrilemedi. Dosyalarınızın geçerli PDF olduğunu kontrol edin.",
+"Could not update metadata. Please check that date formats are correct.": "Üst veri güncellenemedi. Tarih biçimlerinin doğru olduğunu kontrol edin.",
+"Create a \"dark mode\" version of your PDF.": "PDF'inizin koyu renkli bir sürümünü oluşturun.",
+"Create a PDF from one or more BMP images.": "Bir ya da birden çok BMP resminden PDF oluşturun.",
+"Create a PDF from one or more HEIC images.": "Bir ya da birden çok HEIC resminden PDF oluşturun.",
+"Create a PDF from one or more JPG images.": "Bir ya da birden çok JPG resminden PDF oluşturun.",
+"Create a PDF from one or more PNG images.": "Bir ya da birden çok PNG resminden PDF oluşturun.",
+"Create a PDF from one or more SVG images.": "Bir ya da birden çok SVG resminden PDF oluşturun.",
+"Create a PDF from one or more TIFF images.": "Bir ya da birden çok TIFF resminden PDF oluşturun.",
+"Create a PDF from one or more WebP images.": "Bir ya da birden çok WebP resminden PDF oluşturun.",
+"Create fillable PDF forms with drag-and-drop text fields.": "Sürükle-bırak alanlarla doldurulabilir PDF formları oluşturun.",
+"Creating Booklet...": "Kitapçık hazırlanıyor...",
+"Creating Excel file...": "Excel dosyası hazırlanıyor...",
+"Creating N-Up PDF...": "N'li PDF hazırlanıyor...",
+"Creating PDF from JPGs...": "JPG'lerden PDF hazırlanıyor...",
+"Creating PDF from SVG files...": "SVG dosyalarından PDF hazırlanıyor...",
+"Creating PDF...": "PDF hazırlanıyor...",
+"Creating ZIP archive...": "ZIP arşivi hazırlanıyor...",
+"Creating ZIP file...": "ZIP dosyası hazırlanıyor...",
+"Crop": "Kırp",
+"Crop complete! Your download has started.": "Kırpma tamam. İndirme başladı.",
+"Custom Zoom": "Özel yakınlık",
+"Decrypt": "Şifreyi Çöz",
+"Decrypting PDF...": "PDF şifresi çözülüyor...",
+"Delete": "Sil",
+"Delete Page": "Sayfayı Sil",
+"Delete layer": "Katmanı sil",
+"Deleting pages...": "Sayfalar siliniyor...",
+"Description for screen readers": "Ekran okuyucular için açıklama",
+"Deskew": "Eğikliği Düzelt",
+"Destination": "Hedef",
+"Detecting blank pages...": "Boş sayfalar aranıyor...",
+"Digital Sign": "Dijital İmza",
+"Direction": "Yön",
+"Divide pages horizontally or vertically.": "Sayfaları yatay ya da dikey bölün.",
+"Document Properties": "Belge Özellikleri",
+"Document properties": "Belge özellikleri",
+"Document-level attachment": "Belge düzeyinde ek",
+"Download Edited PDF": "Düzenlenen PDF'i İndir",
+"Draw, type, or upload your signature.": "İmzanızı çizin, yazın ya da yükleyin.",
+"Duplicate Page": "Sayfayı Çoğalt",
+"Duplicate, reorder, and delete pages.": "Sayfaları çoğaltın, sıralayın ve silin.",
+"EPUB Files": "EPUB dosyaları",
+"Edit": "Düzenle",
+"Edit Scope": "Düzenleme kapsamı",
+"Email Files": "E-posta dosyaları",
+"Email to PDF": "E-postadan PDF'e",
+"Embed one or more files into your PDF.": "PDF'inize bir ya da birden çok dosya gömün.",
+"Embedding files into PDF...": "Dosyalar PDF'e gömülüyor...",
+"Encrypt": "Şifrele",
+"Encrypting PDF with 256-bit AES...": "PDF 256 bit AES ile şifreleniyor...",
+"Enter bookmark title": "Yer imi başlığını yazın",
+"Enter password": "Şifreyi yazın",
+"Enter password...": "Şifreyi yazın...",
+"Error during execution": "Çalışırken hata oluştu",
+"Extract PDF content as LlamaIndex JSON for RAG/LLM pipelines.": "PDF içeriğini yapay zekâ (RAG/LLM) için LlamaIndex JSON olarak çıkarın.",
+"Extract a range of pages into a new PDF.": "Bir sayfa aralığını yeni bir PDF'e çıkarın.",
+"Extract all embedded files from PDF(s) as a ZIP.": "PDF'lerdeki bütün gömülü dosyaları ZIP olarak çıkarın.",
+"Extract all embedded images from your PDF files.": "PDF dosyalarınızdaki bütün resimleri çıkarın.",
+"Extract tables from PDF and convert to Excel (XLSX).": "PDF'teki tabloları Excel'e (XLSX) çıkarın.",
+"Extract tables from PDFs as CSV, JSON, or Markdown.": "PDF'teki tabloları CSV, JSON ya da Markdown olarak çıkarın.",
+"Extract text from PDF files and save as plain text (.txt).": "PDF'teki yazıyı düz metin (.txt) olarak kaydedin.",
+"Extracted 1 table successfully!": "1 tablo çıkarıldı.",
+"Extracting pages...": "Sayfalar çıkarılıyor...",
+"Extracting tables...": "Tablolar çıkarılıyor...",
+"Extracting text from multiple files...": "Dosyalardan metin çıkarılıyor...",
+"Extracting text...": "Metin çıkarılıyor...",
+"FB2 Files": "FB2 dosyaları",
+"Failed": "Başarısız",
+"Failed to add child layer": "Alt katman eklenemedi",
+"Failed to add layer:": "Katman eklenemedi:",
+"Failed to apply Bates numbers.": "Bates numaraları eklenemedi.",
+"Failed to apply color adjustments. The file might be corrupted.": "Renk ayarları uygulanamadı. Dosya bozuk olabilir.",
+"Failed to apply redactions.": "Karartmalar uygulanamadı.",
+"Failed to apply scanner effect. The file might be corrupted.": "Tarayıcı efekti uygulanamadı. Dosya bozuk olabilir.",
+"Failed to convert BMP to PDF. One of the files may be invalid.": "BMP, PDF'e dönüştürülemedi. Dosyalardan biri geçersiz olabilir.",
+"Failed to convert HEIC to PDF. One of the files may be invalid.": "HEIC, PDF'e dönüştürülemedi. Dosyalardan biri geçersiz olabilir.",
+"Failed to convert PDF to greyscale. The file might be corrupted.": "PDF gri tonlamaya çevrilemedi. Dosya bozuk olabilir.",
+"Failed to convert PDF. It may be image-based or corrupted.": "PDF dönüştürülemedi. Resim tabanlı ya da bozuk olabilir.",
+"Failed to convert TIFF to PDF. One of the files may be invalid.": "TIFF, PDF'e dönüştürülemedi. Dosyalardan biri geçersiz olabilir.",
+"Failed to copy metadata to clipboard.": "Üst veri panoya kopyalanamadı.",
+"Failed to decrypt. Try the Decrypt tool instead.": "Şifre çözülemedi. Bunun yerine Şifre Çöz aracını deneyin.",
+"Failed to delete layer": "Katman silinemedi",
+"Failed to delete pages.": "Sayfalar silinemedi.",
+"Failed to download the edited PDF.": "Düzenlenen PDF indirilemedi.",
+"Failed to edit attachments.": "Ekler düzenlenemedi.",
+"Failed to extract pages.": "Sayfalar çıkarılamadı.",
+"Failed to generate PDF.": "PDF oluşturulamadı.",
+"Failed to load PDF file.": "PDF dosyası yüklenemedi.",
+"Failed to load PDF for cropping.": "Kırpmak için PDF yüklenemedi.",
+"Failed to load PDF for preview.": "Önizleme için PDF yüklenemedi.",
+"Failed to load PDF form viewer.": "PDF form görüntüleyici yüklenemedi.",
+"Failed to load PDF:": "PDF yüklenemedi:",
+"Failed to load attachments from PDF.": "PDF'teki ekler yüklenemedi.",
+"Failed to load images:": "Resimler yüklenemedi:",
+"Failed to load one or more PDF files": "Bir ya da birden çok PDF dosyası yüklenemedi",
+"Failed to load one or more PDF files.": "Bir ya da birden çok PDF dosyası yüklenemedi.",
+"Failed to load template.": "Şablon yüklenemedi.",
+"Failed to load the PDF Editor.": "PDF düzenleyici yüklenemedi.",
+"Failed to load the image processor. Please ensure your browser supports SharedArrayBuffer (requires HTTPS or localhost).": "Resim işleyici yüklenemedi. Tarayıcınız bu özelliği desteklemiyor olabilir.",
+"Failed to merge PDFs. Please check that all files are valid and not password-protected.": "PDF'ler birleştirilemedi. Bütün dosyaların geçerli ve şifresiz olduğunu kontrol edin.",
+"Failed to parse the certificate file.": "Sertifika dosyası okunamadı.",
+"Failed to render page previews": "Sayfa önizlemeleri hazırlanamadı",
+"Failed to render page previews.": "Sayfa önizlemeleri hazırlanamadı.",
+"Failed to render page thumbnails": "Sayfa küçük resimleri hazırlanamadı",
+"Failed to render page.": "Sayfa çizilemedi.",
+"Failed to save PDF:": "PDF kaydedilemedi:",
+"Failed to save changes.": "Değişiklikler kaydedilemedi.",
+"Failed to save the new PDF. Check console for details.": "Yeni PDF kaydedilemedi.",
+"Failed to toggle layer visibility": "Katman görünürlüğü değiştirilemedi",
+"Failed to validate signatures. The file may be corrupted.": "İmzalar doğrulanamadı. Dosya bozuk olabilir.",
+"Field name cannot be empty": "Alan adı boş olamaz",
+"Fill in forms directly in the browser. Also supports XFA forms.": "Formları doğrudan tarayıcıda doldurun. XFA formlarını da destekler.",
+"Fine-tune brightness, contrast, saturation and more.": "Parlaklık, karşıtlık, doygunluk ve daha fazlasını ayarlayın.",
+"Flatten": "Düzleştir",
+"Flattening PDF...": "PDF düzleştiriliyor...",
+"Flattening and saving PDF...": "PDF düzleştirilip kaydediliyor...",
+"Flattening multiple PDFs...": "PDF'ler düzleştiriliyor...",
+"Flip the order of all pages in your document.": "Belgenizdeki bütün sayfaların sırasını ters çevirin.",
+"Font": "Yazı tipi",
+"Font to Outline": "Yazı Tipini Çizgiye Çevir",
+"Full-featured PDF editor with page management.": "Sayfa yönetimi de olan tam donanımlı PDF düzenleyici.",
+"Generate a table of contents page from PDF bookmarks.": "PDF yer imlerinden içindekiler sayfası oluşturun.",
+"Generating High-Quality PDF...": "Yüksek kaliteli PDF hazırlanıyor...",
+"Generating PDF...": "PDF hazırlanıyor...",
+"Generating ZIP file...": "ZIP dosyası hazırlanıyor...",
+"Header & Footer": "Üst Bilgi & Alt Bilgi",
+"Header & Footer added successfully!": "Üst ve alt bilgi eklendi.",
+"Image Input": "Resim girişi",
+"Images": "Resimler",
+"Include this file": "Bu dosyayı ekle",
+"Incorrect password. Please try again.": "Şifre yanlış. Lütfen tekrar deneyin.",
+"Initializing Ghostscript...": "Ghostscript hazırlanıyor...",
+"Initializing PDF engine...": "PDF motoru hazırlanıyor...",
+"Initializing PyMuPDF...": "PDF motoru hazırlanıyor...",
+"Initializing decryption...": "Şifre çözme hazırlanıyor...",
+"Initializing encryption...": "Şifreleme hazırlanıyor...",
+"Initializing repair engine...": "Onarım motoru hazırlanıyor...",
+"Insert an empty page anywhere in your PDF.": "PDF'inizin istediğiniz yerine boş sayfa ekleyin.",
+"Insert page numbers into your document.": "Belgenize sayfa numarası ekleyin.",
+"Inspect the hidden properties of your PDF.": "PDF'inizin gizli özelliklerini inceleyin.",
+"Invalid File": "Geçersiz dosya",
+"Invalid Group Size": "Geçersiz grup boyutu",
+"Invalid Split Point": "Geçersiz bölme noktası",
+"Inverting PDF colors...": "PDF renkleri ters çevriliyor...",
+"Item 1": "Öğe 1",
+"JSON Files": "JSON dosyaları",
+"JSON to PDF": "JSON'dan PDF'e",
+"Key (e.g., Department)": "Anahtar (örn. Bölüm)",
+"Layer not found": "Katman bulunamadı",
+"Leave blank for all pages": "Bütün sayfalar için boş bırakın",
+"Linearize": "Doğrusallaştır",
+"Lists": "Listeler",
+"Load": "Yükle",
+"Load system fonts…": "Sistem yazı tiplerini yükle…",
+"Loading Engine...": "Motor yükleniyor...",
+"Loading PDF Editor...": "PDF düzenleyici yükleniyor...",
+"Loading PDF Text Editor...": "PDF metin düzenleyici yükleniyor...",
+"Loading PDF converter...": "PDF dönüştürücü yükleniyor...",
+"Loading PDF documents...": "PDF belgeleri yükleniyor...",
+"Loading PDF engine...": "PDF motoru yükleniyor...",
+"Loading PDF files...": "PDF dosyaları yükleniyor...",
+"Loading PDF form...": "PDF formu yükleniyor...",
+"Loading PDF processor...": "PDF işleyici yükleniyor...",
+"Loading PDF viewer...": "PDF görüntüleyici yükleniyor...",
+"Loading PDFs...": "PDF'ler yükleniyor...",
+"Loading attachments...": "Ekler yükleniyor...",
+"Loading engine...": "Motor yükleniyor...",
+"Loading preview...": "Önizleme yükleniyor...",
+"MOBI Files": "MOBI dosyaları",
+"Make a PDF searchable and copyable.": "PDF'i aranabilir ve kopyalanabilir yapın.",
+"Make form fields and annotations non-editable.": "Form alanlarını ve notları düzenlenemez yapın.",
+"Make your PDF look like a scanned document.": "PDF'inizi taranmış belge gibi gösterin.",
+"Markdown Files": "Markdown dosyaları",
+"Merge PDFs by alternating pages from each PDF. Preserves Bookmarks.": "PDF'leri sayfaları sırayla karıştırarak birleştirin. Yer imlerini korur.",
+"Merge, Split, Organize, Delete, Rotate, Add Blank Pages, Extract and Duplicate in a unified interface.": "Birleştirme, bölme, düzenleme, silme, döndürme, boş sayfa ekleme, çıkarma ve çoğaltma tek ekranda.",
+"Merging PDFs...": "PDF'ler birleştiriliyor...",
+"Metadata copied to clipboard as JSON.": "Üst veri JSON olarak panoya kopyalandı.",
+"Metadata removed successfully!": "Üst veri kaldırıldı.",
+"Metadata updated successfully!": "Üst veri güncellendi.",
+"Missing File": "Eksik dosya",
+"More": "Daha fazla",
+"N-Up PDF created successfully!": "N'li PDF hazırlandı.",
+"No PDF document loaded.": "Yüklü PDF belgesi yok.",
+"No PDF file loaded.": "Yüklü PDF dosyası yok.",
+"No PDFs could be processed.": "Hiçbir PDF işlenemedi.",
+"No attachments found in this PDF.": "Bu PDF'te ek yok.",
+"No attachments selected for removal.": "Kaldırmak için ek seçilmedi.",
+"No blank pages detected in this PDF.": "Bu PDF'te boş sayfa bulunmadı.",
+"No configurable settings for this node.": "Bu düğümün ayarı yok.",
+"No embedded images were found in the selected PDF(s).": "Seçilen PDF'lerde resim bulunmadı.",
+"No files or pages selected to merge.": "Birleştirmek için dosya ya da sayfa seçilmedi.",
+"No items were selected for removal or none were found in the PDF.": "Kaldırmak için öğe seçilmedi ya da PDF'te bulunamadı.",
+"No pages selected for removal.": "Kaldırmak için sayfa seçilmedi.",
+"No tables were detected in this PDF.": "Bu PDF'te tablo bulunmadı.",
+"No valid page numbers found.": "Geçerli sayfa numarası bulunamadı.",
+"No valid pages to save.": "Kaydedilecek geçerli sayfa yok.",
+"ODG Files": "ODG dosyaları",
+"One PDF per page": "Her sayfa ayrı PDF",
+"Optimize PDF for fast web viewing.": "PDF'i web'de hızlı açılacak şekilde iyileştirin.",
+"Optimizing PDFs for web view (linearizing)...": "PDF'ler web için iyileştiriliyor...",
+"Outline": "Çizgi",
+"Overlay or underlay pages from one PDF onto another.": "Bir PDF'in sayfalarını ötekinin üstüne ya da altına yerleştirin.",
+"PDF Files": "PDF dosyaları",
+"PDF Input": "PDF girişi",
+"PDF converted to CSV successfully!": "PDF, CSV'ye dönüştürüldü.",
+"PDF converted to SVG successfully!": "PDF, SVG'ye dönüştürüldü.",
+"PDF converted to greyscale successfully!": "PDF gri tonlamaya çevrildi.",
+"PDF created successfully!": "PDF hazırlandı.",
+"PDF decrypted successfully! Your download has started.": "PDF şifresi çözüldü. İndirme başladı.",
+"PDF has been sanitized and downloaded.": "PDF temizlendi ve indirildi.",
+"PDF organized successfully!": "PDF düzenlendi.",
+"PDF restrictions removed successfully! The file is now fully editable and printable.": "PDF kısıtlamaları kaldırıldı. Dosya artık düzenlenebilir ve yazdırılabilir.",
+"PDF split successfully!": "PDF bölündü.",
+"PDF to DOCX": "PDF'ten DOCX'e",
+"PDF to Images": "PDF'ten Resme",
+"PDF to Markdown": "PDF'ten Markdown'a",
+"PDF to PDF/A": "PDF'ten PDF/A'ya",
+"PDF to XLSX": "PDF'ten XLSX'e",
+"PDF with layer changes saved!": "Katman değişiklikleriyle PDF kaydedildi.",
+"PDFs have been mixed successfully!": "PDF'ler karıştırıldı.",
+"PDFs merged successfully!": "PDF'ler birleştirildi.",
+"Package multiple PDF files into a ZIP archive.": "Birden çok PDF'i ZIP arşivinde toplayın.",
+"Page Numbers": "Sayfa Numaraları",
+"Page numbers added successfully!": "Sayfa numaraları eklendi.",
+"Page sizes standardized successfully!": "Sayfa boyutları eşitlendi.",
+"Pages Files": "Pages dosyaları",
+"Pages combined successfully!": "Sayfalar birleştirildi.",
+"Pages have been divided successfully!": "Sayfalar bölündü.",
+"Pages have been reordered.": "Sayfalar yeniden sıralandı.",
+"Pages have been reversed successfully!": "Sayfalar ters çevrildi.",
+"Password": "Şifre",
+"Password Required": "Şifre gerekli",
+"Password for all files": "Bütün dosyalar için şifre",
+"Path Stroke": "Çizgi",
+"Please draw a rectangle on at least one page to select the crop area.": "Kırpılacak alanı seçmek için en az bir sayfada dikdörtgen çizin.",
+"Please ensure all page numbers in the order are unique.": "Sıradaki her sayfa numarası bir kez geçmeli.",
+"Please enter a layer name": "Lütfen bir katman adı yazın",
+"Please enter a name.": "Lütfen bir ad yazın.",
+"Please enter a page order.": "Lütfen bir sayfa sırası yazın.",
+"Please enter a password": "Lütfen bir şifre yazın",
+"Please enter a user password.": "Lütfen bir kullanıcı şifresi yazın.",
+"Please enter a valid number of pages (1 or more).": "Lütfen geçerli bir sayfa sayısı yazın (1 ya da daha fazla).",
+"Please enter a valid page range (e.g., 1-5, 8, 11-13).": "Lütfen geçerli bir sayfa aralığı yazın (örn. 1-5, 8, 11-13).",
+"Please enter page numbers to extract.": "Lütfen çıkarılacak sayfa numaralarını yazın.",
+"Please enter positive numbers.": "Lütfen pozitif sayılar yazın.",
+"Please enter some Markdown text.": "Lütfen biraz Markdown metni yazın.",
+"Please enter some text to convert.": "Lütfen dönüştürülecek bir metin yazın.",
+"Please enter the PDF password.": "Lütfen PDF şifresini yazın.",
+"Please load a PDF first.": "Lütfen önce bir PDF yükleyin.",
+"Please select PDF files to create a ZIP archive.": "ZIP arşivi için lütfen PDF dosyaları seçin.",
+"Please select a .pem, .crt, .cer, or .der certificate file.": "Lütfen .pem, .crt, .cer ya da .der sertifika dosyası seçin.",
+"Please select a PDF file.": "Lütfen bir PDF dosyası seçin.",
+"Please select a valid PDF file.": "Lütfen geçerli bir PDF dosyası seçin.",
+"Please select an area on at least one page to crop.": "Lütfen en az bir sayfada kırpılacak alanı seçin.",
+"Please select an area to crop first.": "Lütfen önce kırpılacak alanı seçin.",
+"Please select an area to crop.": "Lütfen kırpılacak alanı seçin.",
+"Please select at least one BMP file.": "Lütfen en az bir BMP dosyası seçin.",
+"Please select at least one CSV file.": "Lütfen en az bir CSV dosyası seçin.",
+"Please select at least one Excel file.": "Lütfen en az bir Excel dosyası seçin.",
+"Please select at least one HEIC file.": "Lütfen en az bir HEIC dosyası seçin.",
+"Please select at least one JPG file.": "Lütfen en az bir JPG dosyası seçin.",
+"Please select at least one JPG or JPEG2000 image.": "Lütfen en az bir JPG ya da JPEG2000 resmi seçin.",
+"Please select at least one ODT file.": "Lütfen en az bir ODT dosyası seçin.",
+"Please select at least one PDF file.": "Lütfen en az bir PDF dosyası seçin.",
+"Please select at least one PowerPoint file.": "Lütfen en az bir PowerPoint dosyası seçin.",
+"Please select at least one RTF file.": "Lütfen en az bir RTF dosyası seçin.",
+"Please select at least one SVG file.": "Lütfen en az bir SVG dosyası seçin.",
+"Please select at least one TIFF file.": "Lütfen en az bir TIFF dosyası seçin.",
+"Please select at least one Word document.": "Lütfen en az bir Word belgesi seçin.",
+"Please select at least one file to attach.": "Lütfen eklenecek en az bir dosya seçin.",
+"Please select at least one image file.": "Lütfen en az bir resim dosyası seçin.",
+"Please select at least one text file.": "Lütfen en az bir metin dosyası seçin.",
+"Please select one or more PDF files.": "Lütfen bir ya da birden çok PDF dosyası seçin.",
+"Please select pages to delete.": "Lütfen silinecek sayfaları seçin.",
+"Please specify a page range for page-level attachments.": "Sayfa düzeyindeki ekler için lütfen bir sayfa aralığı yazın.",
+"Please upload PDF files.": "Lütfen PDF dosyaları yükleyin.",
+"Please upload a .docx file first.": "Lütfen önce bir .docx dosyası yükleyin.",
+"Please upload a PDF file first.": "Lütfen önce bir PDF dosyası yükleyin.",
+"Please upload a PDF file.": "Lütfen bir PDF dosyası yükleyin.",
+"Please upload a PDF first.": "Lütfen önce bir PDF yükleyin.",
+"Please upload a valid PDF file.": "Lütfen geçerli bir PDF dosyası yükleyin.",
+"Please upload at least one PDF file.": "Lütfen en az bir PDF dosyası yükleyin.",
+"Please upload at least two PDF files to alternate and mix.": "Karıştırmak için lütfen en az iki PDF dosyası yükleyin.",
+"Please upload both a base PDF and an overlay/underlay PDF.": "Lütfen hem ana PDF'i hem de üste/alta konacak PDF'i yükleyin.",
+"Please upload valid PDF files.": "Lütfen geçerli PDF dosyaları yükleyin.",
+"Please use the Download button in the PDF viewer toolbar above.": "Lütfen yukarıdaki PDF görüntüleyici çubuğundaki İndir düğmesini kullanın.",
+"Please wait for the PDF viewer to load.": "Lütfen PDF görüntüleyicinin yüklenmesini bekleyin.",
+"Please wait for the form to finish loading.": "Lütfen formun yüklenmesini bekleyin.",
+"Posterize": "Poster Yap",
+"Posterizing PDF...": "PDF poster boyutuna bölünüyor...",
+"Pre-flattening PDF...": "PDF hazırlanıyor (düzleştirme)...",
+"Preparing PDF export...": "PDF indirmeye hazırlanıyor...",
+"Preparing conversion...": "Dönüştürme hazırlanıyor...",
+"Preparing download...": "İndirme hazırlanıyor...",
+"Preparing preview...": "Önizleme hazırlanıyor...",
+"Presentations": "Sunular",
+"Processing PDF permissions...": "PDF izinleri işleniyor...",
+"Processing attachments...": "Ekler işleniyor...",
+"Processing images...": "Resimler işleniyor...",
+"Processing multiple PDFs...": "PDF'ler işleniyor...",
+"Publisher Files": "Publisher dosyaları",
+"Rasterize": "Resme Çevir",
+"Reading PDF...": "PDF okunuyor...",
+"Reading encrypted PDF...": "Şifreli PDF okunuyor...",
+"Reading files...": "Dosyalar okunuyor...",
+"Reading layer configuration...": "Katman ayarları okunuyor...",
+"Rearrange pages for double-sided booklet printing.": "Sayfaları çift taraflı kitapçık baskısı için dizin.",
+"Recover data from corrupted or damaged PDF files.": "Bozuk ya da hasarlı PDF dosyalarındaki veriyi kurtarın.",
+"Redact": "Karart",
+"Reduce the file size of your PDF.": "PDF'inizin dosya boyutunu küçültün.",
+"Remove": "Kaldır",
+"Remove All Attachments": "Bütün Ekleri Kaldır",
+"Remove Blank Pages": "Boş Sayfaları Kaldır",
+"Remove attachment": "Eki kaldır",
+"Remove file": "Dosyayı kaldır",
+"Remove metadata, annotations, scripts, and more.": "Üst veri, notlar, betikler ve daha fazlasını kaldırın.",
+"Remove password protection and security restrictions associated with digitally signed PDF files.": "Dijital imzalı PDF'lerdeki şifre korumasını ve güvenlik kısıtlamalarını kaldırın.",
+"Remove specific pages from your document.": "Belgenizden istediğiniz sayfaları kaldırın.",
+"Removing all metadata...": "Bütün üst veri kaldırılıyor...",
+"Removing annotations...": "Notlar kaldırılıyor...",
+"Removing redacted text from document data...": "Karartılan yazı belge verisinden siliniyor...",
+"Removing restrictions...": "Kısıtlamalar kaldırılıyor...",
+"Rendering page previews...": "Sayfa önizlemeleri hazırlanıyor...",
+"Reorder front/back scan blocks into collated page order in one PDF.": "Ön/arka taranmış sayfaları doğru sırayla tek PDF'te birleştirin.",
+"Repair": "Onar",
+"Retry Failed": "Başarısızları Yeniden Dene",
+"Reversing page order...": "Sayfa sırası ters çevriliyor...",
+"Rotate": "Döndür",
+"Rotate +90°": "+90° Döndür",
+"Rotations applied successfully!": "Döndürmeler uygulandı.",
+"Running Condense compression...": "Sıkıştırılıyor (Condense)...",
+"Running Photon compression...": "Sıkıştırılıyor (Photon)...",
+"SVG Files": "SVG dosyaları",
+"SVG to PDF": "SVG'den PDF'e",
+"Sanitize": "Temizle",
+"Sanitizing PDF...": "PDF temizleniyor...",
+"Save a selection of pages as new files.": "Seçtiğiniz sayfaları yeni dosyalar olarak kaydedin.",
+"Saving PDF with layer changes...": "Katman değişiklikleriyle PDF kaydediliyor...",
+"Scanner Effect": "Tarayıcı Efekti",
+"Scanner effect applied successfully!": "Tarayıcı efekti uygulandı.",
+"Search languages...": "Dil ara...",
+"Set or change user permissions on a PDF.": "PDF'teki kullanıcı izinlerini ayarlayın ya da değiştirin.",
+"Signed PDF downloaded successfully!": "İmzalı PDF indirildi.",
+"Signed PDF saved successfully!": "İmzalı PDF kaydedildi.",
+"Skip this file": "Bu dosyayı atla",
+"Some files were skipped because they are not supported images.": "Bazı dosyalar desteklenen resim olmadığı için atlandı.",
+"Some files were skipped. Only BMP files are allowed.": "Bazı dosyalar atlandı. Yalnız BMP dosyaları kabul edilir.",
+"Some files were skipped. Only HEIC/HEIF files are allowed.": "Bazı dosyalar atlandı. Yalnız HEIC/HEIF dosyaları kabul edilir.",
+"Some files were skipped. Only JPG, JPEG, JP2, and JPX files are allowed.": "Bazı dosyalar atlandı. Yalnız JPG, JPEG, JP2 ve JPX dosyaları kabul edilir.",
+"Some files were skipped. Only PDF files are allowed.": "Bazı dosyalar atlandı. Yalnız PDF dosyaları kabul edilir.",
+"Some files were skipped. Only PNG images are allowed.": "Bazı dosyalar atlandı. Yalnız PNG resimleri kabul edilir.",
+"Some files were skipped. Only SVG graphics are allowed.": "Bazı dosyalar atlandı. Yalnız SVG çizimleri kabul edilir.",
+"Some files were skipped. Only TIFF files are allowed.": "Bazı dosyalar atlandı. Yalnız TIFF dosyaları kabul edilir.",
+"Some files were skipped. Only WebP images are allowed.": "Bazı dosyalar atlandı. Yalnız WebP resimleri kabul edilir.",
+"Some files were skipped. Only supported image formats are allowed.": "Bazı dosyalar atlandı. Yalnız desteklenen resim biçimleri kabul edilir.",
+"Some files were skipped. Only text files are allowed.": "Bazı dosyalar atlandı. Yalnız metin dosyaları kabul edilir.",
+"Some pages could not be processed. Please try again.": "Bazı sayfalar işlenemedi. Lütfen tekrar deneyin.",
+"Some redaction marks could not be applied, so the file was not downloaded. Apply or remove them in the editor and try again.": "Bazı karartma işaretleri uygulanamadığı için dosya indirilmedi. Düzenleyicide uygulayın ya da kaldırın, sonra tekrar deneyin.",
+"Spacing": "Aralık",
+"Split a large page into multiple smaller pages.": "Büyük bir sayfayı birden çok küçük sayfaya bölün.",
+"Splitting PDF pages...": "PDF sayfaları bölünüyor...",
+"Splitting PDF...": "PDF bölünüyor...",
+"Spreadsheets": "Tablolar",
+"Stamp text or an image over your PDF pages.": "PDF sayfalarınızın üstüne yazı ya da resim damgalayın.",
+"Standardize all pages to a uniform size.": "Bütün sayfaları aynı boyuta getirin.",
+"Standardizing pages...": "Sayfalar eşitleniyor...",
+"Stitch all pages into one continuous scroll.": "Bütün sayfaları tek uzun sayfada birleştirin.",
+"Strip comments, highlights, and links.": "Yorumları, vurguları ve bağlantıları kaldırın.",
+"Strip hidden data from your PDF.": "PDF'inizdeki gizli verileri temizleyin.",
+"Successfully extracted PDF for AI/LLM use.": "PDF yapay zekâ kullanımı için hazırlandı.",
+"Supported: JPG, PNG, BMP, GIF, TIFF, WebP, HEIC, PSD, SVG, PNM, PGM, PBM, PPM, PAM, JXR, JPX, JP2": "Desteklenenler: JPG, PNG, BMP, GIF, TIFF, WebP, HEIC, PSD, SVG, PNM, PGM, PBM, PPM, PAM, JXR, JPX, JP2",
+"Table of Contents": "İçindekiler",
+"Text Color": "Yazı Rengi",
+"Text Files": "Metin dosyaları",
+"Text color changed successfully!": "Yazı rengi değiştirildi.",
+"Text converted to PDF successfully!": "Metin PDF'e dönüştürüldü.",
+"Text extracted successfully!": "Metin çıkarıldı.",
+"Text to PDF": "Metinden PDF'e",
+"The PDF file(s) do not contain any attachments to extract.": "PDF dosyalarında çıkarılacak ek yok.",
+"The PDF viewer is still initializing.": "PDF görüntüleyici hâlâ hazırlanıyor.",
+"The current password you entered is incorrect. Please try again.": "Yazdığınız mevcut şifre yanlış. Lütfen tekrar deneyin.",
+"The password you entered is incorrect. Please try again.": "Yazdığınız şifre yanlış. Lütfen tekrar deneyin.",
+"The specified page order is incomplete or contains invalid page numbers. Please ensure you provide a new position for every original page.": "Yazılan sayfa sırası eksik ya da geçersiz numara içeriyor. Her sayfa için yeni bir yer yazdığınızdan emin olun.",
+"This PDF is password-protected. Please enter the current password to proceed.": "Bu PDF şifreli. Devam etmek için mevcut şifreyi yazın.",
+"Timestamp": "Zaman Damgası",
+"Toggle sync scroll": "Birlikte kaydırmayı aç/kapat",
+"Trim the margins of every page in your PDF.": "PDF'inizdeki her sayfanın kenar boşluklarını kırpın.",
+"Turn pages in 90-degree increments.": "Sayfaları 90 derecelik adımlarla döndürün.",
+"Unable to decrypt the PDF with the provided password.": "Yazılan şifreyle PDF'in şifresi çözülemedi.",
+"Unable to repair any of the uploaded PDF files.": "Yüklenen PDF dosyalarının hiçbiri onarılamadı.",
+"Unlock All": "Hepsinin Kilidini Aç",
+"Updating metadata...": "Üst veri güncelleniyor...",
+"Value (e.g., Marketing)": "Değer (örn. Pazarlama)",
+"Verify digital signatures and view certificate details.": "Dijital imzaları doğrulayın ve sertifika ayrıntılarını görün.",
+"View or remove attachments in your PDF.": "PDF'inizdeki ekleri görün ya da kaldırın.",
+"View, toggle, add, and delete OCG layers in your PDF.": "PDF'inizdeki katmanları görün, açıp kapatın, ekleyin ve silin.",
+"Visio Files": "Visio dosyaları",
+"WPS Files": "WPS dosyaları",
+"Watermark": "Filigran",
+"Watermark added successfully!": "Filigran eklendi.",
+"Word Documents": "Word belgeleri",
+"WordPerfect Files": "WordPerfect dosyaları",
+"Worker error occurred. Check console for details.": "İşlem sırasında bir hata oluştu.",
+"Workflow completed": "İş akışı tamamlandı",
+"XML Files": "XML dosyaları",
+"XPS Files": "XPS dosyaları",
+"You cannot delete the last page of the document.": "Belgenin son sayfası silinemez.",
+"Your PDF has been cropped and the download has started.": "PDF'iniz kırpıldı, indirme başladı.",
+"Your PDF has been posterized.": "PDF'iniz poster boyutuna bölündü.",
+"Your workflow needs at least one input node and one output node to run.": "İş akışının çalışması için en az bir giriş ve bir çıkış düğümü gerekir.",
+"ZIP archive created successfully!": "ZIP arşivi oluşturuldu.",
+"e.g. dd/mm/yyyy HH:MM:ss": "örn. gg/aa/yyyy SS:DD:ss"
 };
   var ATTR = ['placeholder', 'title', 'aria-label'];
+
+  /* İçinde sayı ya da dosya adı geçen İngilizce iletiler (ör. "Pages (e.g., 1-3, 5) - Total: 16").
+     Birebir sözlükte bulunamayan yazı bu kalıplarla denenir; uzun (daha özel) kalıp önce. */
+  var KALIP = [
+[
+"^The number of pages specified \\((\\d+)\\) does not match the current number of pages in the document \\((\\d+)\\)\\. Please provide a complete ordering for all pages\\.$",
+"Yazılan sayfa sayısı ($1) belgedeki sayfa sayısıyla ($2) aynı değil. Lütfen bütün sayfalar için tam bir sıra yazın."
+],
+[
+"^The PDF was downloaded, but these steps could not be completed: (.+?)\\. The content they cover may still be in the file\\.$",
+"PDF indirildi, ancak şu adımlar tamamlanamadı: $1. Bu adımların kapsadığı içerik dosyada kalmış olabilir."
+],
+[
+"^Failed to timestamp PDF: (.+?)  Please try a different TSA server or check your internet connection\\.$",
+"PDF'e zaman damgası eklenemedi: $1 Başka bir TSA sunucusu deneyin ya da internet bağlantınızı kontrol edin."
+],
+[
+"^Could not generate a preview\\. The file may be corrupt or contain unsupported features\\. Error: (.+?)$",
+"Önizleme oluşturulamadı. Dosya bozuk olabilir ya da desteklenmeyen özellikler içerebilir. Hata: $1"
+],
+[
+"^The PDF has (\\d+) pages, which is not evenly divisible by (.+?)\\. The last PDF will contain (.+?) page\\(s\\)\\.$",
+"PDF $1 sayfa; $2'ye tam bölünmüyor. Son PDF $3 sayfa olacak."
+],
+[
+"^Field name \"(.+?)\" already exists in this (?:PDF|form)\\. Please try using a unique name\\.$",
+"\"$1\" alan adı zaten var. Lütfen farklı bir ad kullanın."
+],
+[
+"^Method: (.+?)\\. Could not reduce file size further\\. Original: (.+?), New: (.+?)\\.$",
+"Yöntem: $1. Dosya daha fazla küçültülemedi. Önce: $2, sonra: $3."
+],
+[
+"^Enter 0 to insert at the beginning, or (\\d+) to insert at the end\\.$",
+"Başa eklemek için 0, sona eklemek için $1 yazın."
+],
+[
+"^Compressed (\\d+) PDF\\(s\\)\\. Total size reduced from (.+?) to (.+?) \\(Saved (\\d+)%\\)\\.$",
+"$1 PDF sıkıştırıldı. Toplam boyut $2 → $3 (%$4 küçüldü)."
+],
+[
+"^Found (\\d+) blank page\\(s\\)\\. Click on a page to deselect it\\.$",
+"$1 boş sayfa bulundu. Seçimi kaldırmak için sayfaya dokunun."
+],
+[
+"^Successfully converted (\\d+) PSD files to a single PDF\\.$",
+"$1 PSD dosyası tek bir PDF'e dönüştürüldü."
+],
+[
+"^Successfully converted (\\d+) PowerPoint file\\(s\\) to PDF\\.$",
+"$1 PowerPoint dosyası PDF'e dönüştürüldü."
+],
+[
+"^Method: (.+?)\\. File size reduced from (.+?) to (.+?) \\(Saved (.+?)%\\)\\.$",
+"Yöntem: $1. Dosya boyutu $2 → $3 (%$4 küçüldü)."
+],
+[
+"^Please select at least one (.+?) file \\(\\.eml or \\.msg\\)\\.$",
+"Lütfen en az bir $1 dosyası seçin (.eml ya da .msg)."
+],
+[
+"^Successfully converted (\\d+) Word document\\(s\\) to PDF\\.$",
+"$1 Word belgesi PDF'e dönüştürüldü."
+],
+[
+"^An error occurred during rasterization\\. Error: (.+?)$",
+"Görüntüye çevirme sırasında bir hata oluştu. Hata: $1"
+],
+[
+"^Bates numbers applied successfully! \\((\\d+) through (\\d+)\\)$",
+"Bates numaraları eklendi ($1 – $2)."
+],
+[
+"^Successfully extracted (.+?) PDF\\(s\\) for AI/LLM use\\.$",
+"$1 PDF yapay zekâ kullanımı için hazırlandı."
+],
+[
+"^An error occurred during compression\\. Error: (.+?)$",
+"Sıkıştırma sırasında bir hata oluştu. Hata: $1"
+],
+[
+"^Successfully converted (\\d+) Excel file\\(s\\) to PDF\\.$",
+"$1 Excel dosyası PDF'e dönüştürüldü."
+],
+[
+"^An error occurred during conversion\\. Error: (.+?)$",
+"Dönüştürme sırasında bir hata oluştu. Hata: $1"
+],
+[
+"^An error occurred during extraction\\. Error: (.+?)$",
+"Çıkarma sırasında bir hata oluştu. Hata: $1"
+],
+[
+"^Successfully converted (\\d+) CSV file\\(s\\) to PDF\\.$",
+"$1 CSV dosyası PDF'e dönüştürüldü."
+],
+[
+"^Successfully converted (\\d+) ODT file\\(s\\) to PDF\\.$",
+"$1 ODT dosyası PDF'e dönüştürüldü."
+],
+[
+"^Successfully converted (\\d+) PDF\\(s\\) to Markdown\\.$",
+"$1 PDF, Markdown'a dönüştürüldü."
+],
+[
+"^Successfully converted (\\d+) RTF file\\(s\\) to PDF\\.$",
+"$1 RTF dosyası PDF'e dönüştürüldü."
+],
+[
+"^Successfully converted (\\d+) (.+?) file\\(s\\) to PDF\\.$",
+"$1 $2 dosyası PDF'e dönüştürüldü."
+],
+[
+"^Successfully rasterized (.+?) PDF\\(s\\) at (.+?) DPI\\.$",
+"$1 PDF $2 DPI ile görüntüye çevrildi."
+],
+[
+"^An error occurred during sanitization: (.+?)$",
+"Temizleme sırasında bir hata oluştu: $1"
+],
+[
+"^Successfully converted (\\d+) PDF\\(s\\) to DOCX\\.$",
+"$1 PDF, DOCX'e dönüştürüldü."
+],
+[
+"^Wrong password or failed to decrypt \"(.+?)\"\\.$",
+"Şifre yanlış ya da \"$1\" çözülemedi."
+],
+[
+"^(\\d+) attachment\\(s\\) extracted successfully!$",
+"$1 ek çıkarıldı."
+],
+[
+"^Please enter a number between 0 and (\\d+)\\.$",
+"Lütfen 0 ile $1 arasında bir sayı girin."
+],
+[
+"^Repaired (\\d+) file\\(s\\)\\. Failed to repair: (.+?)$",
+"$1 dosya onarıldı. Onarılamayan: $2"
+],
+[
+"^Successfully converted (\\d+) files to PDF\\.$",
+"$1 dosya PDF'e dönüştürüldü."
+],
+[
+"^Removed (\\d+) blank page\\(s\\) successfully!$",
+"$1 boş sayfa kaldırıldı."
+],
+[
+"^Successfully converted (.+?) to Markdown\\.$",
+"$1, Markdown'a dönüştürüldü."
+],
+[
+"^Successfully rasterized PDF at (.+?) DPI\\.$",
+"PDF $1 DPI ile görüntüye çevrildi."
+],
+[
+"^Successfully converted (\\d+) PDF\\(s\\) to (.+?)\\.$",
+"$1 PDF, $2 biçimine dönüştürüldü."
+],
+[
+"^Compressed (\\d+) PDF\\(s\\)\\. Total size: (.+?)\\.$",
+"$1 PDF sıkıştırıldı. Toplam boyut: $2."
+],
+[
+"^Converted (\\d+) files \\((\\d+) pages\\) to SVG!$",
+"$1 dosya ($2 sayfa) SVG'ye dönüştürüldü."
+],
+[
+"^Please select at least one (.+?) file\\.$",
+"Lütfen en az bir $1 dosyası seçin."
+],
+[
+"^Extracted (\\d+) page\\(s\\) successfully!$",
+"$1 sayfa çıkarıldı."
+],
+[
+"^Extracting text from file (\\d+)/(\\d+): (.+?)\\.\\.\\.$",
+"Metin çıkarılıyor, dosya $1/$2: $3..."
+],
+[
+"^Failed to convert PDF to Excel\\. (.+?)$",
+"PDF, Excel'e dönüştürülemedi. $1"
+],
+[
+"^Successfully converted (.+?) to DOCX\\.$",
+"$1, DOCX'e dönüştürüldü."
+],
+[
+"^(\\d+) file\\(s\\) attached successfully\\.$",
+"$1 dosya eklendi."
+],
+[
+"^Added (\\d+) blank page(?:s|) successfully!$",
+"$1 boş sayfa eklendi."
+],
+[
+"^Extracted (\\d+) tables successfully!$",
+"$1 tablo çıkarıldı."
+],
+[
+"^Extracted text from (\\d+) PDF files!$",
+"$1 PDF dosyasından metin çıkarıldı."
+],
+[
+"^Failed to convert text to PDF\\. (.+?)$",
+"Metin PDF'e dönüştürülemedi. $1"
+],
+[
+"^Successfully converted (.+?) to PDF\\.$",
+"$1, PDF'e dönüştürüldü."
+],
+[
+"^Deleted (\\d+) page\\(s\\) successfully!$",
+"$1 sayfa silindi."
+],
+[
+"^Failed to convert PDF to CSV\\. (.+?)$",
+"PDF, CSV'ye dönüştürülemedi. $1"
+],
+[
+"^Failed to convert PDF to SVG\\. (.+?)$",
+"PDF, SVG'ye dönüştürülemedi. $1"
+],
+[
+"^Pages \\(e\\.g\\., 1\\-3, 5\\) \\- Total: (\\d+)$",
+"Sayfalar (örn. 1-3, 5) - Toplam: $1"
+],
+[
+"^Rendering preview for page (\\d+)\\.\\.\\.$",
+"Sayfa $1 önizlemesi hazırlanıyor..."
+],
+[
+"^Booklet created with (\\d+) sheets!$",
+"Kitapçık $1 yaprak olarak hazırlandı."
+],
+[
+"^Extracted (\\d+) table\\(s\\) to Excel!$",
+"$1 tablo Excel'e aktarıldı."
+],
+[
+"^(.+?) • Could not load page count$",
+"$1 • Sayfa sayısı alınamadı"
+],
+[
+"^Rasterized (.+?) PDF\\(s\\), failed (.+?)\\.$",
+"$1 PDF görüntüye çevrildi, $2 başarısız."
+],
+[
+"^Successfully converted (.+?) to (.+?)\\.$",
+"$1, $2 biçimine dönüştürüldü."
+],
+[
+"^Extracted (.+?) PDF\\(s\\), failed (.+?)\\.$",
+"$1 PDF çıkarıldı, $2 başarısız."
+],
+[
+"^Found (\\d+) image\\(s\\) in (\\d+) PDF\\(s\\)\\.$",
+"$2 PDF içinde $1 resim bulundu."
+],
+[
+"^Indexing PDF 1 page (\\d+) of (\\d+)\\.\\.\\.$",
+"1. PDF taranıyor: sayfa $1/$2..."
+],
+[
+"^Indexing PDF 2 page (\\d+) of (\\d+)\\.\\.\\.$",
+"2. PDF taranıyor: sayfa $1/$2..."
+],
+[
+"^Extracting images from (.+?)\\.\\.\\.$",
+"$1 içinden resimler çıkarılıyor..."
+],
+[
+"^Failed to extract tables\\. (.+?)$",
+"Tablolar çıkarılamadı. $1"
+],
+[
+"^Loading comparison (\\d+) of (\\d+)\\.\\.\\.$",
+"Karşılaştırma yükleniyor: $1/$2..."
+],
+[
+"^PDF (.+?) applied successfully\\.$",
+"PDF $1 uygulandı."
+],
+[
+"^Removing (\\d+) blank page\\(s\\)\\.\\.\\.$",
+"$1 boş sayfa kaldırılıyor..."
+],
+[
+"^Rendering page previews: (\\d+)/(\\d+)$",
+"Sayfa önizlemeleri hazırlanıyor: $1/$2"
+],
+[
+"^Could not add blank page(?:s|)\\.$",
+"Boş sayfa eklenemedi."
+],
+[
+"^Extracting (.+?) for AI \\((\\d+)/(\\d+)\\)\\.\\.\\.$",
+"$1 yapay zekâ için hazırlanıyor ($2/$3)..."
+],
+[
+"^Converted (\\d+) pages to SVG!$",
+"$1 sayfa SVG'ye dönüştürüldü."
+],
+[
+"^Extracting text from (.+?)\\.\\.\\.$",
+"$1 içinden metin çıkarılıyor..."
+],
+[
+"^Failed to attach files: (.+?)$",
+"Dosyalar eklenemedi: $1"
+],
+[
+"^Converting page (\\d+) of (\\d+)\\.\\.\\.$",
+"Sayfa dönüştürülüyor: $1/$2..."
+],
+[
+"^Flattening page (\\d+) of (\\d+)\\.\\.\\.$",
+"Sayfa düzleştiriliyor: $1/$2..."
+],
+[
+"^Loading layers from (.+?)\\.\\.\\.$",
+"$1 katmanları yükleniyor..."
+],
+[
+"^Processing file (\\d+) of (\\d+)\\.\\.\\.$",
+"Dosya işleniyor: $1/$2..."
+],
+[
+"^Processing page (\\d+) of (\\d+)\\.\\.\\.$",
+"Sayfa işleniyor: $1/$2..."
+],
+[
+"^Running OCR on page (\\d+)\\.\\.\\.$",
+"Sayfa $1 üzerinde metin tanıma (OCR) çalışıyor..."
+],
+[
+"^(\\d+) Files Need a Password$",
+"$1 dosya şifre istiyor"
+],
+[
+"^Failed to deskew PDF: (.+?)$",
+"PDF'in eğikliği düzeltilemedi: $1"
+],
+[
+"^Failed to load files: (.+?)$",
+"Dosyalar yüklenemedi: $1"
+],
+[
+"^(\\d+) PDF file\\(s\\) selected$",
+"$1 PDF dosyası seçildi"
+],
+[
+"^Adding (\\d+) blank page(?:s|)\\.\\.\\.$",
+"$1 boş sayfa ekleniyor..."
+],
+[
+"^Extracting (.+?) for AI\\.\\.\\.$",
+"$1 yapay zekâ için hazırlanıyor..."
+],
+[
+"^Scanning page (\\d+) of (\\d+)\\.\\.\\.$",
+"Sayfa taranıyor: $1/$2..."
+],
+[
+"^(\\d+) file(?:s|) • (\\d+) total pages$",
+"$1 dosya • toplam $2 sayfa"
+],
+[
+"^An error occurred: (.+?)\\.$",
+"Bir hata oluştu: $1."
+],
+[
+"^Processing sheet (\\d+)\\.\\.\\.$",
+"Sayfa (tablo) $1 işleniyor..."
+],
+[
+"^Wrong password for: (.+?)$",
+"Şifre yanlış: $1"
+],
+[
+"^(.+?) • Loading pages\\.\\.\\.$",
+"$1 • Sayfalar yükleniyor..."
+],
+[
+"^(\\d+) PDF files selected$",
+"$1 PDF dosyası seçildi"
+],
+[
+"^An error occurred: (.+?)$",
+"Bir hata oluştu: $1"
+],
+[
+"^Deskewed (\\d+) file\\(s\\)\\. (?:Downloads started for all files\\.|)$",
+"$1 dosyanın eğikliği düzeltildi."
+],
+[
+"^Rasterizing (.+?) \\((\\d+)/(\\d+)\\)\\.\\.\\.$",
+"$1 görüntüye çevriliyor ($2/$3)..."
+],
+[
+"^Template \"(.+?)\" loaded\\.$",
+"\"$1\" şablonu yüklendi."
+],
+[
+"^Unlock Remaining \\((.+?)\\)$",
+"Kalanların kilidini aç ($1)"
+],
+[
+"^Compressing (\\d+)/(\\d+): (.+?)\\.\\.\\.$",
+"Sıkıştırılıyor $1/$2: $3..."
+],
+[
+"^Decrypting (.+?) \\((\\d+)/(\\d+)\\)\\.\\.\\.$",
+"$1 şifresi çözülüyor ($2/$3)..."
+],
+[
+"^Optimizing (.+?) \\((\\d+)/(\\d+)\\)\\.\\.\\.$",
+"$1 iyileştiriliyor ($2/$3)..."
+],
+[
+"^Rendering Page (\\d+)\\.\\.\\.$",
+"Sayfa $1 çiziliyor..."
+],
+[
+"^Template \"(.+?)\" saved\\.$",
+"\"$1\" şablonu kaydedildi."
+],
+[
+"^Converting (\\d+)/(\\d+): (.+?)\\.\\.\\.$",
+"Dönüştürülüyor $1/$2: $3..."
+],
+[
+"^Decrypting (\\d+) of (\\d+): (.+?)$",
+"Şifre çözülüyor $1/$2: $3"
+],
+[
+"^Flattening (\\d+)/(\\d+): (.+?)\\.\\.\\.$",
+"Düzleştiriliyor $1/$2: $3..."
+],
+[
+"^Processing (\\d+)/(\\d+): (.+?)\\.\\.\\.$",
+"İşleniyor $1/$2: $3..."
+],
+[
+"^Repairing (.+?) \\((\\d+)/(\\d+)\\)\\.\\.\\.$",
+"$1 onarılıyor ($2/$3)..."
+],
+[
+"^Reversing (.+?) \\((\\d+)/(\\d+)\\)\\.\\.\\.$",
+"$1 ters çevriliyor ($2/$3)..."
+],
+[
+"^Validating (\\d+) of (\\d+): (.+?)$",
+"Doğrulanıyor $1/$2: $3"
+],
+[
+"^Loading page (\\d+)\\.\\.\\.$",
+"Sayfa $1 yükleniyor..."
+],
+[
+"^Page (\\d+) attachment$",
+"Sayfa $1 eki"
+],
+[
+"^Processed (\\d+) PDFs\\.$",
+"$1 PDF işlendi."
+],
+[
+"^Mermaid Error: (.+?)$",
+"Mermaid hatası: $1"
+],
+[
+"^Rasterizing (.+?)\\.\\.\\.$",
+"$1 görüntüye çevriliyor..."
+],
+[
+"^Reading (.+?) \\((\\d+)/(\\d+)\\)\\.\\.\\.$",
+"$1 okunuyor ($2/$3)..."
+],
+[
+"^Adding (.+?) \\((\\d+)/(\\d+)\\)\\.\\.\\.$",
+"$1 ekleniyor ($2/$3)..."
+],
+[
+"^Converting (.+?)\\.\\.\\.$",
+"$1 dönüştürülüyor..."
+],
+[
+"^File (\\d+)/(\\d+): Page (\\d+)/(\\d+)$",
+"Dosya $1/$2: Sayfa $3/$4"
+],
+[
+"^(.+?) • Loading\\.\\.\\.$",
+"$1 • Yükleniyor..."
+],
+[
+"^Deskewing (.+?)\\.\\.\\.$",
+"$1 düzeltiliyor..."
+],
+[
+"^Repairing (.+?)\\.\\.\\.$",
+"$1 onarılıyor..."
+],
+[
+"^Applying (.+?)\\.\\.\\.$",
+"$1 uygulanıyor..."
+],
+[
+"^(.+?) \\((.+?), (\\d+) pages\\)$",
+"$1 ($2, $3 sayfa)"
+],
+[
+"^Loading (.+?)\\.\\.\\.$",
+"$1 yükleniyor..."
+],
+[
+"^Parsing (.+?)\\.\\.\\.$",
+"$1 okunuyor..."
+],
+[
+"^(.+?) • (\\d+) pages$",
+"$1 • $2 sayfa"
+],
+[
+"^(.+?) • (.+?) pages$",
+"$1 • $2 sayfa"
+],
+[
+"^Page (\\d+) of (\\d+)$",
+"Sayfa $1 / $2"
+],
+[
+"^File (\\d+)/(\\d+): (.+?)$",
+"Dosya $1/$2: $3"
+],
+[
+"^Page (\\d+) / (\\d+)$",
+"Sayfa $1 / $2"
+],
+[
+"^(\\d+) node(?:s|)$",
+"$1 düğüm"
+],
+[
+"^OCR: (.+?)$",
+"OCR: $1"
+],
+[
+"^Page (\\d+)$",
+"Sayfa $1"
+]
+].map(function (k) { return [new RegExp(k[0]), k[1]]; });
+  function kalipla(t) {
+    if (t.length > 400) return null;
+    for (var i = 0; i < KALIP.length; i++) if (KALIP[i][0].test(t)) return t.replace(KALIP[i][0], KALIP[i][1]);
+    return null;
+  }
   function cevirMetin(n) {
     var v = n.nodeValue; if (!v) return;
-    var t = v.replace(/\s+/g, ' ').trim(); if (!t || !SOZ.hasOwnProperty(t)) return;
+    var t = v.replace(/\s+/g, ' ').trim(); if (!t) return;
+    var c = SOZ.hasOwnProperty(t) ? SOZ[t] : kalipla(t); if (c === null || c === t) return;
     var bas = v.match(/^\s*/)[0], son = v.match(/\s*$/)[0];
-    n.nodeValue = bas + SOZ[t] + son;
+    n.nodeValue = bas + c + son;
   }
   function cevirOge(el) {
     for (var i = 0; i < ATTR.length; i++) {
       var a = el.getAttribute && el.getAttribute(ATTR[i]);
-      if (a) { var t = a.replace(/\s+/g, ' ').trim(); if (SOZ.hasOwnProperty(t)) el.setAttribute(ATTR[i], SOZ[t]); }
+      if (a) { var t = a.replace(/\s+/g, ' ').trim(); var c = SOZ.hasOwnProperty(t) ? SOZ[t] : kalipla(t); if (c !== null && c !== t) el.setAttribute(ATTR[i], c); }
     }
   }
   function cevirAgac(kok) {
@@ -979,7 +2099,42 @@
     }, 120);
   }, true);
 
+
+  /* ---------------- 5) Bekleme penceresi: Kanat sahneleri (20 Ekim 2026) ----------------
+     BentoPDF'in dönen halkası yerine o an yapılan işe uygun bir Kanat sahnesi: birleştir (zımba),
+     böl/kırp/sil (makas), sıkıştır (pres), dönüştür (sihirli değnek), okuma/tanıma (büyüteç),
+     öteki bütün araçlar (masa başında yazıyor). Sahne sayfanın adresinden seçilir. */
+  var KBK_SAHNE = {"birlestir": "<svg class=\"kbk-sahne\" viewBox=\"0 0 260 170\"><g transform=\"translate(100 40)\"><g class=\"kbk-b-sol\"><rect class=\"kbk-kagit\" x=\"0\" y=\"0\" width=\"56\" height=\"74\" rx=\"4\"/><path class=\"kbk-satir\" d=\"M10 16h34M10 28h30M10 40h34M10 52h22\"/></g><g class=\"kbk-b-sag\"><rect class=\"kbk-kagit\" x=\"0\" y=\"0\" width=\"56\" height=\"74\" rx=\"4\" style=\"fill:#f4f7ff\"/><path class=\"kbk-satir\" d=\"M10 16h34M10 28h26M10 40h34M10 52h28\"/></g><g class=\"kbk-zimba\"><rect x=\"6\" y=\"-14\" width=\"22\" height=\"9\" rx=\"3\" fill=\"#4f7cf0\"/><rect x=\"4\" y=\"-6\" width=\"26\" height=\"4\" rx=\"2\" fill=\"#2b4fb8\"/></g><g class=\"kbk-pat\"><path d=\"M17 2 l0 -10 M7 6 l-8 -6 M27 6 l8 -6\" stroke=\"#ffb020\" stroke-width=\"2.5\" stroke-linecap=\"round\"/></g></g><g class=\"kbk-zipla\"><use href=\"#knKarakter\" x=\"14\" y=\"62\" width=\"96\" height=\"96\"/></g></svg>", "kes": "<svg class=\"kbk-sahne\" viewBox=\"0 0 260 170\"><g transform=\"translate(120 34)\"><g class=\"kbk-y-sol\"><path class=\"kbk-kagit\" d=\"M0 4 a4 4 0 0 1 4 -4 H32 V96 H4 a4 4 0 0 1 -4 -4Z\"/><path class=\"kbk-satir\" d=\"M9 18h18M9 30h16M9 42h18M9 54h12\"/></g><g class=\"kbk-y-sag\"><path class=\"kbk-kagit\" d=\"M32 0 H60 a4 4 0 0 1 4 4 V92 a4 4 0 0 1 -4 4 H32Z\"/><path class=\"kbk-satir\" d=\"M38 18h16M38 30h18M38 42h14M38 54h18\"/></g><path d=\"M32 0V96\" stroke=\"#9aa6c8\" stroke-width=\"1.5\" stroke-dasharray=\"4 4\"/><g class=\"kbk-makas\" transform=\"translate(20 -18)\"><g transform=\"rotate(90 12 12)\"><g class=\"kbk-agiz1\"><path d=\"M12 12 L30 6\" stroke=\"#5b6587\" stroke-width=\"3\" stroke-linecap=\"round\"/><circle cx=\"6\" cy=\"16\" r=\"5\" fill=\"none\" stroke=\"#e5484d\" stroke-width=\"3\"/></g><g class=\"kbk-agiz2\"><path d=\"M12 12 L30 18\" stroke=\"#5b6587\" stroke-width=\"3\" stroke-linecap=\"round\"/><circle cx=\"6\" cy=\"8\" r=\"5\" fill=\"none\" stroke=\"#e5484d\" stroke-width=\"3\"/></g></g></g></g><g class=\"kbk-zipla\"><use href=\"#knKarakter\" x=\"14\" y=\"62\" width=\"96\" height=\"96\"/></g></svg>", "sikistir": "<svg class=\"kbk-sahne\" viewBox=\"0 0 260 170\"><g transform=\"translate(140 30)\"><g class=\"kbk-pres\" transform=\"translate(0 22)\"><rect x=\"-8\" y=\"0\" width=\"76\" height=\"10\" rx=\"4\" fill=\"#8b5cf6\"/><rect x=\"26\" y=\"-22\" width=\"8\" height=\"24\" rx=\"3\" fill=\"#6d4bd8\"/></g><g transform=\"translate(0 40)\"><g class=\"kbk-sik\"><rect class=\"kbk-kagit\" x=\"0\" y=\"0\" width=\"60\" height=\"78\" rx=\"4\"/><path class=\"kbk-satir\" d=\"M10 16h40M10 28h34M10 40h40M10 52h26\"/></g></g><rect x=\"-14\" y=\"120\" width=\"88\" height=\"5\" rx=\"2.5\" fill=\"#d9dff0\"/></g><g class=\"kbk-zipla\"><use href=\"#knKarakter\" x=\"10\" y=\"62\" width=\"96\" height=\"96\"/><path class=\"kbk-ter\" d=\"M86 82 q4 6 0 9 q-4 -3 0 -9z\" fill=\"#5fc3ff\"/></g></svg>", "donustur": "<svg class=\"kbk-sahne\" viewBox=\"0 0 260 170\"><g transform=\"translate(150 36)\"><rect class=\"kbk-kagit\" x=\"0\" y=\"0\" width=\"64\" height=\"84\" rx=\"5\"/><rect class=\"kbk-renk\" x=\"0\" y=\"0\" width=\"64\" height=\"22\" rx=\"5\"/><rect class=\"kbk-renk\" x=\"0\" y=\"12\" width=\"64\" height=\"10\"/><text class=\"kbk-harf-w\" x=\"32\" y=\"17\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#fff\" font-family=\"Inter,sans-serif\">{K}</text><text class=\"kbk-harf-p\" x=\"32\" y=\"17\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#fff\" font-family=\"Inter,sans-serif\">{H}</text><path class=\"kbk-satir\" d=\"M10 36h44M10 48h38M10 60h44M10 72h28\"/></g><g class=\"kbk-degnek\"><path d=\"M108 112 L150 82\" stroke=\"#4a3b2a\" stroke-width=\"4\" stroke-linecap=\"round\"/><path d=\"M150 82 l3 -7 3 7 7 1 -5 5 2 7 -7 -4 -7 4 2 -7 -5 -5z\" fill=\"#ffd34d\" transform=\"translate(-6 -6)\"/></g><path class=\"kbk-yildiz\" d=\"M222 30 l2 6 6 2 -6 2 -2 6 -2 -6 -6 -2 6 -2z\" fill=\"#ffd34d\"/><path class=\"kbk-yildiz kbk-y2\" d=\"M140 30 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z\" fill=\"#a78bfa\"/><path class=\"kbk-yildiz kbk-y3\" d=\"M230 112 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z\" fill=\"#6fd3a9\"/><g class=\"kbk-zipla\"><use href=\"#knKarakter\" x=\"14\" y=\"62\" width=\"96\" height=\"96\"/></g></svg>", "oku": "<svg class=\"kbk-sahne\" viewBox=\"0 0 260 170\"><g transform=\"translate(130 30)\"><rect class=\"kbk-kagit\" x=\"0\" y=\"0\" width=\"74\" height=\"96\" rx=\"5\"/><path class=\"kbk-satir\" d=\"M12 20h50M12 36h50M12 52h50M12 68h50\"/><path class=\"kbk-okunan kbk-o1\" d=\"M12 20h46\"/><path class=\"kbk-okunan kbk-o2\" d=\"M12 36h46\"/><path class=\"kbk-okunan kbk-o3\" d=\"M12 52h46\"/><path class=\"kbk-okunan kbk-o4\" d=\"M12 68h46\"/><g class=\"kbk-buyutec\" transform=\"translate(4 6)\"><g><circle cx=\"10\" cy=\"10\" r=\"11\" fill=\"rgba(160,200,255,.25)\" stroke=\"#1d2a55\" stroke-width=\"3\"/><path d=\"M18 18 L28 28\" stroke=\"#1d2a55\" stroke-width=\"4.5\" stroke-linecap=\"round\"/></g></g></g><g class=\"kbk-zipla\"><use href=\"#knKarakter\" x=\"14\" y=\"62\" width=\"96\" height=\"96\"/></g></svg>", "masa": "<svg class=\"kbk-sahne\" viewBox=\"0 0 300 184\"><path class=\"kbk-lamba\" d=\"M232 38 L196 128 L290 128 Z\" fill=\"#fff4c4\"/><path d=\"M262 128 h22\" stroke=\"#5b6587\" stroke-width=\"4\" stroke-linecap=\"round\"/><path d=\"M272 128 L262 70 L240 46\" stroke=\"#5b6587\" stroke-width=\"3.4\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M226 30 L252 40 L242 56 Z\" fill=\"#ffb020\" stroke=\"#c97f00\" stroke-width=\"1.6\" stroke-linejoin=\"round\"/><rect x=\"64\" y=\"70\" width=\"82\" height=\"66\" rx=\"14\" fill=\"#8b5cf6\" opacity=\".85\"/><g class=\"kbk-bas-sal\"><use href=\"#knKarakterMasa\" x=\"46\" y=\"30\" width=\"118\" height=\"118\"/></g><rect x=\"20\" y=\"126\" width=\"270\" height=\"12\" rx=\"4\" fill=\"#c98b5e\"/><rect x=\"20\" y=\"126\" width=\"270\" height=\"4\" rx=\"2\" fill=\"#dba57a\"/><rect x=\"34\" y=\"138\" width=\"10\" height=\"40\" rx=\"3\" fill=\"#b07548\"/><rect x=\"266\" y=\"138\" width=\"10\" height=\"40\" rx=\"3\" fill=\"#b07548\"/><rect x=\"60\" y=\"138\" width=\"190\" height=\"30\" rx=\"4\" fill=\"#d39a6c\"/><g transform=\"translate(120 104)\"><path d=\"M0 22 L6 4 L46 4 L40 22Z\" fill=\"#fff\" stroke=\"#c9d1e6\" stroke-width=\"1.4\" stroke-linejoin=\"round\"/><path class=\"kbk-satir-y kbk-sy1\" d=\"M10 10 h30\" transform=\"skewX(-18) translate(4 0)\"/><path class=\"kbk-satir-y kbk-sy2\" d=\"M8 14.5 h30\" transform=\"skewX(-18) translate(5 0)\"/><path class=\"kbk-satir-y kbk-sy3\" d=\"M6 19 h30\" transform=\"skewX(-18) translate(6 0)\"/></g><g class=\"kbk-yaz\"><g transform=\"translate(140 112)\"><path d=\"M-6 -6 L14 -20\" stroke=\"#ffd34d\" stroke-width=\"4.5\" stroke-linecap=\"round\"/><path d=\"M14 -20 L17 -22\" stroke=\"#f19aa3\" stroke-width=\"4.5\" stroke-linecap=\"round\"/><path d=\"M-6 -6 L-9 -4\" stroke=\"#333\" stroke-width=\"2\" stroke-linecap=\"round\"/><circle cx=\"-2\" cy=\"-8\" r=\"5\" fill=\"#ffe0c4\" stroke=\"#e0a77f\" stroke-width=\"1\"/></g></g><g transform=\"translate(192 104)\"><g class=\"kbk-yigin\"><rect x=\"0\" y=\"16\" width=\"38\" height=\"6\" rx=\"1.5\" fill=\"#fff\" stroke=\"#c9d1e6\" stroke-width=\"1.3\"/><rect x=\"2\" y=\"10\" width=\"38\" height=\"6\" rx=\"1.5\" fill=\"#fff\" stroke=\"#c9d1e6\" stroke-width=\"1.3\"/><rect x=\"-1\" y=\"4\" width=\"38\" height=\"6\" rx=\"1.5\" fill=\"#fff\" stroke=\"#c9d1e6\" stroke-width=\"1.3\"/><rect x=\"3\" y=\"-2\" width=\"38\" height=\"6\" rx=\"1.5\" fill=\"#f4f7ff\" stroke=\"#c9d1e6\" stroke-width=\"1.3\"/></g></g><g transform=\"translate(40 104)\"><g class=\"kbk-buhar\"><path d=\"M6 -2 c-3 -4 3 -6 0 -10\"/><path d=\"M12 -2 c-3 -4 3 -6 0 -10\"/></g><path d=\"M0 2 L4 22 H14 L18 2Z\" fill=\"#ffe7c2\" stroke=\"#d1a36a\" stroke-width=\"1.4\" stroke-linejoin=\"round\"/><path d=\"M1.5 8 H16.5\" stroke=\"#c0392b\" stroke-width=\"4\" opacity=\".75\"/></g></svg>"};
+  var KBK_KANAT = "<svg id=\"kbkKanatDefs\" width=\"0\" height=\"0\" style=\"position:absolute\" aria-hidden=\"true\"><defs><linearGradient id=\"knUst\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#6ff0ff\"/><stop offset=\".45\" stop-color=\"#27a8f0\"/><stop offset=\"1\" stop-color=\"#2a4bd0\"/></linearGradient><linearGradient id=\"knAlt\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#ffb347\"/><stop offset=\"1\" stop-color=\"#ff6a2b\"/></linearGradient><radialGradient id=\"knYuz\" cx=\".45\" cy=\".4\" r=\".7\"><stop offset=\"0\" stop-color=\"#ffe6cf\"/><stop offset=\"1\" stop-color=\"#f6c9a3\"/></radialGradient><symbol id=\"knKanatSol\" viewBox=\"0 0 100 100\"><path d=\"M44 58C34 40 20 30 10 33C3 35 3 45 8 52C13 59 27 63 44 62Z\" fill=\"url(#knUst)\" stroke=\"#16306e\" stroke-width=\"1.6\" stroke-linejoin=\"round\"/><path d=\"M45 63C33 64 22 70 20 78C19 84 25 87 31 84C38 80 43 72 46 66Z\" fill=\"url(#knAlt)\" stroke=\"#16306e\" stroke-width=\"1.6\" stroke-linejoin=\"round\"/><circle cx=\"14\" cy=\"41\" r=\"2.4\" fill=\"#fff\" opacity=\".9\"/><circle cx=\"21\" cy=\"37\" r=\"1.6\" fill=\"#fff\" opacity=\".85\"/><circle cx=\"27\" cy=\"79\" r=\"1.8\" fill=\"#fff\" opacity=\".85\"/><path d=\"M40 57C31 48 22 42 14 41\" fill=\"none\" stroke=\"#16306e\" stroke-width=\"1\" opacity=\".45\"/></symbol><!-- Kanat: kelebek kanatlı, anten bantlı küçük öğretmen --><symbol id=\"knKarakter\" viewBox=\"0 0 100 100\"><g class=\"kn-kanat\"><use href=\"#knKanatSol\" width=\"100\" height=\"100\"/></g><g class=\"kn-kanat sag\"><use href=\"#knKanatSol\" width=\"100\" height=\"100\" transform=\"matrix(-1 0 0 1 100 0)\"/></g><g class=\"kn-govde\"><!-- gövde / kazak --><path d=\"M33 92C33 78 40 70 50 70S67 78 67 92Z\" fill=\"#ff7a1a\"/><path d=\"M44 71L50 79L56 71\" fill=\"#fff\" stroke=\"#e25f00\" stroke-width=\"1.2\" stroke-linejoin=\"round\"/><!-- sallanan el --><g class=\"kn-el\"><path d=\"M64 78C70 74 74 68 76 62\" stroke=\"#ff7a1a\" stroke-width=\"6\" stroke-linecap=\"round\" fill=\"none\"/><circle cx=\"76.5\" cy=\"60.5\" r=\"4\" fill=\"url(#knYuz)\" stroke=\"#e0a77f\" stroke-width=\".8\"/></g><!-- antenler --><g class=\"kn-anten\"><path d=\"M45 31C43 23 39 18 34 16\" stroke=\"#243056\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/><circle cx=\"33.5\" cy=\"15.5\" r=\"3.2\" fill=\"#ff7a1a\"/></g><g class=\"kn-anten s\"><path d=\"M55 31C57 23 61 18 66 16\" stroke=\"#243056\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/><circle cx=\"66.5\" cy=\"15.5\" r=\"3.2\" fill=\"#27a8f0\"/></g><!-- baş --><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"url(#knYuz)\" stroke=\"#e0a77f\" stroke-width=\"1\"/><path d=\"M31 46C31 34 40 28 50 28C61 28 69 35 69 45C64 40 57 37 50 38C43 38 36 41 31 46Z\" fill=\"#3a2a22\"/><path d=\"M47 30C49 26 53 25 56 27C53 27 50 28 47 30Z\" fill=\"#3a2a22\"/><!-- gözler --><g class=\"kn-goz\"><ellipse cx=\"43\" cy=\"51\" rx=\"3\" ry=\"3.6\" fill=\"#1d2233\"/><circle cx=\"44\" cy=\"49.8\" r=\"1.1\" fill=\"#fff\"/></g><g class=\"kn-goz\"><ellipse cx=\"57\" cy=\"51\" rx=\"3\" ry=\"3.6\" fill=\"#1d2233\"/><circle cx=\"58\" cy=\"49.8\" r=\"1.1\" fill=\"#fff\"/></g><!-- gözlük --><g fill=\"none\" stroke=\"#243056\" stroke-width=\"1.4\"><circle cx=\"43\" cy=\"51\" r=\"6\"/><circle cx=\"57\" cy=\"51\" r=\"6\"/><path d=\"M49 51h2\"/></g><ellipse cx=\"37\" cy=\"58\" rx=\"3.2\" ry=\"1.9\" fill=\"#ff9d9d\" opacity=\".55\"/><ellipse cx=\"63\" cy=\"58\" rx=\"3.2\" ry=\"1.9\" fill=\"#ff9d9d\" opacity=\".55\"/><path d=\"M44.5 60C47.5 63.5 52.5 63.5 55.5 60\" stroke=\"#8a3b2a\" stroke-width=\"1.8\" fill=\"none\" stroke-linecap=\"round\"/><!-- 8.9: temaya göre aksesuar. 8.10: görünürlük \"display\" özniteliğinde; temaUygula → knAksesuar ayarlar --></g></symbol><symbol id=\"knKarakterMasa\" viewBox=\"0 0 100 100\"><g class=\"kn-kanat\"><use href=\"#knKanatSol\" width=\"100\" height=\"100\"/></g><g class=\"kn-kanat sag\"><use href=\"#knKanatSol\" width=\"100\" height=\"100\" transform=\"matrix(-1 0 0 1 100 0)\"/></g><g class=\"kn-govde\"><!-- gövde / kazak --><path d=\"M33 92C33 78 40 70 50 70S67 78 67 92Z\" fill=\"#ff7a1a\"/><path d=\"M44 71L50 79L56 71\" fill=\"#fff\" stroke=\"#e25f00\" stroke-width=\"1.2\" stroke-linejoin=\"round\"/><!-- sallanan el --><!-- antenler --><g class=\"kn-anten\"><path d=\"M45 31C43 23 39 18 34 16\" stroke=\"#243056\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/><circle cx=\"33.5\" cy=\"15.5\" r=\"3.2\" fill=\"#ff7a1a\"/></g><g class=\"kn-anten s\"><path d=\"M55 31C57 23 61 18 66 16\" stroke=\"#243056\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/><circle cx=\"66.5\" cy=\"15.5\" r=\"3.2\" fill=\"#27a8f0\"/></g><!-- baş --><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"url(#knYuz)\" stroke=\"#e0a77f\" stroke-width=\"1\"/><path d=\"M31 46C31 34 40 28 50 28C61 28 69 35 69 45C64 40 57 37 50 38C43 38 36 41 31 46Z\" fill=\"#3a2a22\"/><path d=\"M47 30C49 26 53 25 56 27C53 27 50 28 47 30Z\" fill=\"#3a2a22\"/><!-- gözler --><g class=\"kn-goz\"><ellipse cx=\"43\" cy=\"51\" rx=\"3\" ry=\"3.6\" fill=\"#1d2233\"/><circle cx=\"44\" cy=\"49.8\" r=\"1.1\" fill=\"#fff\"/></g><g class=\"kn-goz\"><ellipse cx=\"57\" cy=\"51\" rx=\"3\" ry=\"3.6\" fill=\"#1d2233\"/><circle cx=\"58\" cy=\"49.8\" r=\"1.1\" fill=\"#fff\"/></g><!-- gözlük --><g fill=\"none\" stroke=\"#243056\" stroke-width=\"1.4\"><circle cx=\"43\" cy=\"51\" r=\"6\"/><circle cx=\"57\" cy=\"51\" r=\"6\"/><path d=\"M49 51h2\"/></g><ellipse cx=\"37\" cy=\"58\" rx=\"3.2\" ry=\"1.9\" fill=\"#ff9d9d\" opacity=\".55\"/><ellipse cx=\"63\" cy=\"58\" rx=\"3.2\" ry=\"1.9\" fill=\"#ff9d9d\" opacity=\".55\"/><path d=\"M44.5 60C47.5 63.5 52.5 63.5 55.5 60\" stroke=\"#8a3b2a\" stroke-width=\"1.8\" fill=\"none\" stroke-linecap=\"round\"/><!-- 8.9: temaya göre aksesuar. 8.10: görünürlük \"display\" özniteliğinde; temaUygula → knAksesuar ayarlar --></g></symbol></defs></svg>";
+  var KBK_BICIM = { word: 'DOCX', excel: 'XLSX', powerpoint: 'PPTX', image: 'RESİM', jpg: 'JPG', png: 'PNG', webp: 'WEBP', bmp: 'BMP', tiff: 'TIFF', heic: 'HEIC', svg: 'SVG', psd: 'PSD',
+    txt: 'TXT', text: 'TXT', markdown: 'MD', email: 'E-POSTA', epub: 'EPUB', mobi: 'MOBI', fb2: 'FB2', cbz: 'CBZ', csv: 'CSV', json: 'JSON', xml: 'XML', xps: 'XPS', rtf: 'RTF',
+    odt: 'ODT', ods: 'ODS', odp: 'ODP', odg: 'ODG', pages: 'PAGES', pub: 'PUB', vsd: 'VSD', wpd: 'WPD', wps: 'WPS', pdf: 'PDF', pdfa: 'PDF/A', greyscale: 'GRİ', zip: 'ZIP' };
+  function kbkSayfa() { var p = location.pathname.replace(/\/+$/, '').split('/').pop().replace(/\.html$/, ''); return p || 'index'; }
+  function kbkSahneAdi(s) {
+    if (/^(merge-pdf|alternate-merge|combine-single-page|overlay-pdf|duplex-collate)$/.test(s)) return 'birlestir';
+    if (/^(split-pdf|crop-pdf|delete-pages|extract-pages|divide-pages|remove-blank-pages|posterize-pdf)$/.test(s)) return 'kes';
+    if (/^compress-pdf/.test(s)) return 'sikistir';
+    if (/^(ocr-pdf|validate-signature-pdf|extract-tables|prepare-pdf-for-ai|compare-pdfs|view-metadata|pdf-to-text)$/.test(s)) return 'oku';
+    if (/^[a-z0-9]+-to-[a-z0-9]+$/.test(s)) return 'donustur';
+    return 'masa';
+  }
+  function kbkBicim(x) { return KBK_BICIM[x] || String(x).toUpperCase().slice(0, 5); }
+  function kbkKur() {
+    var modlar = document.querySelectorAll('#loader-modal'); if (!modlar.length) return;
+    if (!document.getElementById('kbkKanatDefs')) { var d = document.createElement('div'); d.innerHTML = KBK_KANAT; document.body.appendChild(d.firstChild); }
+    var sayfa = kbkSayfa(), ad = kbkSahneAdi(sayfa), svg = KBK_SAHNE[ad];
+    if (ad === 'donustur') { var m = /^([a-z0-9]+)-to-([a-z0-9]+)$/.exec(sayfa); svg = svg.replace('{K}', kbkBicim(m[1])).replace('{H}', kbkBicim(m[2])); }
+    for (var i = 0; i < modlar.length; i++) {
+      var mod = modlar[i], kutu = mod.firstElementChild; if (!kutu || kutu.querySelector('.kbk-bekle')) continue;
+      mod.classList.add('kbk-modal'); kutu.classList.add('kbk-kutu');
+      var s = document.createElement('div'); s.className = 'kbk-bekle kbk-' + ad; s.setAttribute('aria-hidden', 'true'); s.innerHTML = svg;
+      kutu.insertBefore(s, kutu.firstChild);
+      var c = document.createElement('div'); c.className = 'kbk-cubuk'; c.setAttribute('aria-hidden', 'true'); c.innerHTML = '<b></b>'; kutu.appendChild(c);
+    }
+  }
+
   function basla() {
+    try { kbkKur(); } catch (e) {}
     gozle();
     ebeveyneGonder({ kb: 'hazir' });
     /* arama yapılırken favori bölümünü gizle (BentoPDF kategorileri gizlediği gibi) */

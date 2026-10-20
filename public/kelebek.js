@@ -13,6 +13,18 @@
   try { gomulu = window.top !== window.self; } catch (e) { gomulu = true; }
   if (gomulu) document.documentElement.classList.add('kb-gomulu');
 
+  /* ---------------- 0) Araç sayfalarının başlığı korunur (21 Ekim 2026) ----------------
+     BentoPDF sade kipte her sayfanın başlığını "Kelebek PDF Araçları - PDF Araçları" yapıyordu;
+     sekmede ve Google'da bütün araçlar aynı adla görünüyordu. Sunucunun yazdığı başlık
+     (ör. "PDF Birleştir - Kelebek PDF Araçları") araç sayfalarında geri konur. */
+  (function () {
+    var ilk = document.title, yol = location.pathname.replace(/\/+$/, '').split('/').pop().replace(/\.html$/, '');
+    if (!ilk || !yol || yol === 'index') return;
+    var koru = function () { if (document.title !== ilk && / - PDF Araçları$| - PDF Tools$/.test(document.title)) document.title = ilk; };
+    var bak = function () { var t = document.querySelector('title'); if (t) new MutationObserver(koru).observe(t, { childList: true, characterData: true, subtree: true }); koru(); };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bak); else bak();
+  })();
+
   /* ---------------- 1a) Gece görünümü ----------------
      Kelebek'te Gece teması seçiliyse PDF araçları da koyu görünür (kelebek.css: html.kb-gece).
      İlk açılışta adresteki "kbt=g" işaretinden, araçlar arasında gezinirken bu sekmenin

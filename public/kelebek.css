@@ -396,19 +396,30 @@ html.kb-gece .kb-sn-tik { background: rgba(0, 161, 82, .16); }
 @media (prefers-reduced-motion: reduce) { #kb-sonuc.acik, .kb-sn-tik { animation: none; } }
 
 /* ---- 8) araç sayfası: büyük dosya seç alanı ---- */
-html.kb-arac #tool-uploader { max-width: 780px !important; border: 0 !important; border-radius: 22px !important; box-shadow: 0 4px 22px rgba(20, 30, 60, .07) !important; }
-html.kb-arac #tool-uploader > h1 { text-align: center; font-size: clamp(24px, 3.2vw, 30px) !important; letter-spacing: -.02em; margin-top: 4px; }
-html.kb-arac #tool-uploader > h1 + p { text-align: center; }
-html.kb-arac #back-to-tools { color: var(--kb-g) !important; font-weight: 600; font-size: 14px; }
-html.kb-arac #back-to-tools:hover { color: var(--kb-k) !important; }
-html.kb-arac #drop-zone { height: auto !important; min-height: 230px; border: 2.5px dashed #f2aaa2 !important; background: var(--kb-kart) !important; border-radius: 22px !important; padding: 26px 16px; transition: background .2s, border-color .2s; }
-html.kb-arac #drop-zone:hover, html.kb-arac #drop-zone.bg-gray-700 { background: #fff6f5 !important; border-color: var(--kb-k) !important; }
-html.kb-gece.kb-arac #drop-zone:hover, html.kb-gece.kb-arac #drop-zone.bg-gray-700 { background: #2a1f22 !important; }
-html.kb-arac #drop-zone .ph-upload-simple, html.kb-arac #drop-zone [data-i18n="upload.clickToSelect"] { display: none !important; }
-html.kb-arac #drop-zone [data-i18n="upload.orDragAndDrop"] { font-size: 15px; }
-html.kb-arac #drop-zone [data-i18n="upload.orDragAndDrop"]::first-letter { text-transform: uppercase; }
-.kb-sec { display: inline-block; background: var(--kb-k); color: #fff; font-weight: 800; font-size: 17px; padding: 15px 34px; border-radius: 14px; box-shadow: 0 10px 24px rgba(229, 72, 58, .3); margin-bottom: 14px; pointer-events: none; transition: transform .15s; }
-html.kb-arac #drop-zone:hover .kb-sec { transform: translateY(-2px); background: var(--kb-k2); }
-html.kb-arac #process-btn, html.kb-arac .btn-gradient { background: var(--kb-k) !important; background-image: none !important; color: #fff !important; font-weight: 800 !important; font-size: 16.5px !important; border-radius: 14px !important; padding: 14px 20px !important; box-shadow: 0 10px 24px rgba(229, 72, 58, .25) !important; border: 0 !important; }
-html.kb-arac #process-btn:hover:not(:disabled), html.kb-arac .btn-gradient:hover:not(:disabled) { background: var(--kb-k2) !important; }
-html.kb-arac #process-btn:disabled, html.kb-arac .btn-gradient:disabled { opacity: .5; box-shadow: none !important; }
+#tool-uploader { max-width: 780px !important; border: 0 !important; border-radius: 22px !important; box-shadow: 0 4px 22px rgba(20, 30, 60, .07) !important; }
+#tool-uploader > h1 { text-align: center; font-size: clamp(24px, 3.2vw, 30px) !important; letter-spacing: -.02em; margin-top: 4px; }
+#tool-uploader > h1 + p { text-align: center; }
+#back-to-tools { color: var(--kb-g) !important; font-weight: 600; font-size: 14px; }
+#back-to-tools:hover { color: var(--kb-k) !important; }
+#drop-zone { height: auto !important; min-height: 230px; border: 2.5px dashed #f2aaa2 !important; background: var(--kb-kart) !important; border-radius: 22px !important; padding: 26px 16px; transition: background .2s, border-color .2s; }
+#drop-zone:hover, #drop-zone.bg-gray-700 { background: #fff6f5 !important; border-color: var(--kb-k) !important; }
+html.kb-gece #drop-zone:hover, html.kb-gece #drop-zone.bg-gray-700 { background: #2a1f22 !important; }
+#drop-zone .ph-upload-simple, #drop-zone [data-i18n="upload.clickToSelect"] { display: none !important; }
+#drop-zone [data-i18n="upload.orDragAndDrop"] { font-size: 15px; }
+#drop-zone [data-i18n="upload.orDragAndDrop"]::first-letter { text-transform: uppercase; }
+/* düğme CSS'le çizilir (sayfa ilk boyandığı anda hazır; sonradan eklenip titremez) */
+#drop-zone > div:first-of-type::before { content: 'Dosya seç'; display: inline-block; background: var(--kb-k); color: #fff; font-weight: 800; font-size: 17px; padding: 15px 34px; border-radius: 14px; box-shadow: 0 10px 24px rgba(229, 72, 58, .3); margin-bottom: 14px; pointer-events: none; transition: transform .15s; font-family: inherit; line-height: 1.3; }
+#drop-zone:has(input[accept*="pdf" i]) > div:first-of-type::before { content: 'PDF dosyası seç'; }
+#drop-zone:has(input[accept*="pdf" i][multiple]) > div:first-of-type::before { content: 'PDF dosyalarını seç'; }
+#drop-zone:has(input[accept^="image" i]) > div:first-of-type::before, #drop-zone:has(input[accept*=".jpg" i]) > div:first-of-type::before,
+#drop-zone:has(input[accept*=".heic" i]) > div:first-of-type::before { content: 'Resim seç'; }
+#drop-zone:has(input[accept^="image" i][multiple]) > div:first-of-type::before, #drop-zone:has(input[accept*=".jpg" i][multiple]) > div:first-of-type::before,
+#drop-zone:has(input[accept*=".heic" i][multiple]) > div:first-of-type::before { content: 'Resimleri seç'; }
+#drop-zone:has(input[accept*="pdf" i][accept*="image" i]) > div:first-of-type::before { content: 'Dosya seç'; }
+#drop-zone:hover > div:first-of-type::before { transform: translateY(-2px); background: var(--kb-k2); }
+#process-btn, .btn-gradient { background: var(--kb-k) !important; background-image: none !important; color: #fff !important; font-weight: 800 !important; font-size: 16.5px !important; border-radius: 14px !important; padding: 14px 20px !important; box-shadow: 0 10px 24px rgba(229, 72, 58, .25) !important; border: 0 !important; }
+#process-btn:hover:not(:disabled), .btn-gradient:hover:not(:disabled) { background: var(--kb-k2) !important; }
+#process-btn:disabled, .btn-gradient:disabled { opacity: .5; box-shadow: none !important; }
+
+/* 28 Ekim: ana sayfa, yeni görünüm kurulana kadar gizli (eski başlık bir an görünmesin) */
+html.kb-vitrin-bekle #app, html.kb-vitrin-bekle #tools-header, html.kb-vitrin-bekle #grid-view { visibility: hidden !important; }

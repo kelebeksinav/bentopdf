@@ -2180,6 +2180,12 @@
     watermark: 'filigran', crop: 'kirp', organize: 'sirala duzenle', extract: 'ayikla cikar', edit: 'duzenle yaz', text: 'yazi metin', form: 'form doldur',
     numbers: 'numara sayfa', repair: 'onar bozuk', powerpoint: 'pptx sunum', markdown: 'md', compare: 'karsilastir', metadata: 'bilgi' };
   var vtArac = null, vtKurulu = '';
+  /* 28 Ekim: ana sayfada BentoPDF'in eski başlığı bir an görünüp sonra yeni görünüme geçiyordu.
+     Ana sayfa adresindeysek sayfa, vitrin kurulana kadar gizli bekler (en çok 2,5 sn; sonra her durumda açılır). */
+  if (/^\/(?:[a-z]{2}(?:-[a-zA-Z]{2})?\/)?(?:index(?:\.html)?)?$/.test(location.pathname)) {
+    document.documentElement.classList.add('kb-vitrin-bekle');
+    setTimeout(function () { document.documentElement.classList.remove('kb-vitrin-bekle'); }, 2500);
+  }
   function vtNorm(s) {
     return String(s || '').toLocaleLowerCase('tr').replace(/[çğıöşüâî]/g, function (c) { return { 'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u', 'â': 'a', 'î': 'i' }[c]; })
       .replace(/[→’'`]/g, ' ').replace(/\s+/g, ' ').trim();
@@ -2229,6 +2235,7 @@
     if (imza === vtKurulu && document.getElementById('kb-gruplar')) return;
     vtKurulu = imza; vtArac = A;
     document.documentElement.classList.add('kb-vitrin');
+    setTimeout(function () { document.documentElement.classList.remove('kb-vitrin-bekle'); }, 0);
     var ara = document.getElementById('search-bar'), araKap = ara && ara.closest('.mb-8');
     var kah = document.getElementById('kb-kahraman');
     if (!kah) {
@@ -2412,9 +2419,26 @@
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.documentElement.classList.contains('kb-sonuc-acik')) snKapat(); });
   /* İndirmeden hemen sonra BentoPDF'in "tamamlandı" penceresi açılırsa onu kapat (sonuç ekranı zaten açık). Hata pencereleri dokunulmaz. */
+  /* 8.46: hata pencereleri Kelebek'in hata kaydına da gider (yalnız hata yazısı ve araç adı; dosya bilgisi yok) */
+  var hkGiden = {}, hkSay = 0;
+  function hataBildir(ileti) {
+    try {
+      ileti = String(ileti || '').replace(/\s+/g, ' ').trim().slice(0, 400); if (!ileti || hkGiden[ileti] || hkSay >= 10) return;
+      hkGiden[ileti] = 1; hkSay++;
+      var ek = kbkSayfa();
+      if (gomulu) { ebeveyneGonder({ kb: 'hata', ileti: ileti, ek: ek }); return; }
+      fetch('https://tezbaarzufwsqerswmce.supabase.co/rest/v1/rpc/hata_ekle', { method: 'POST', keepalive: true,
+        headers: { 'apikey': 'sb_publishable_C57vRFSFcZ2p9AgnB2x4eA_mrYFCUID', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ p_liste: [{ surum: 'pdf', kaynak: 'pdf', ileti: ileti, ek: ek, tarayici: (navigator.userAgent.match(/(Edg|OPR|Chrome|Firefox|Safari)\/\d+/) || [''])[0].slice(0, 60) }] }) }).catch(function () {});
+    } catch (e) {}
+  }
   function snUyariGozle() {
     var m = document.getElementById('alert-modal'); if (!m) return;
     new MutationObserver(function () {
+      if (!m.classList.contains('hidden')) {
+        var bt = (document.getElementById('alert-title') || {}).textContent || '';
+        if (/hata|error|başarısız|failed/i.test(bt)) setTimeout(function () { hataBildir((document.getElementById('alert-message') || {}).textContent); }, 300);
+      }
       if (m.classList.contains('hidden') || Date.now() - snAn > 5000 || !document.documentElement.classList.contains('kb-sonuc-acik')) return;
       var bas = (document.getElementById('alert-title') || {}).textContent || '';
       if (/hata|error|uyarı|warning|başarısız|failed/i.test(bas)) return;
@@ -2425,21 +2449,15 @@
   KALIP.unshift([/^.*(Failed to fetch dynamically imported module|NetworkError when attempting to fetch|Load failed).*$/, 'Gerekli dosya internetten indirilemedi. Bağlantını kontrol et; okul ya da kurum ağındaysan başka bir ağda yeniden dene.']);
   KALIP.unshift([/^.*Failed to load [A-Za-z0-9.\- ]+ from CDN.*$/, 'Dönüştürücü indirilemedi. Bu araç ilk kullanımda dönüştürme motorunu cdn.jsdelivr.net adresinden indirir; bulunduğun ağ (okul ya da kurum ağı) bu adresi engelliyor olabilir. Başka bir ağda (ör. telefonun internetiyle) yeniden dene.']);
 
-  /* Araç sayfası: dosya alanında büyük "dosya seç" düğmesi */
-  function aracSayfaKur() {
-    var dz = document.getElementById('drop-zone'), gir = dz && dz.querySelector('input[type=file]');
-    if (!dz || dz.querySelector('.kb-sec')) return;
-    document.documentElement.classList.add('kb-arac');
-    var kabul = (gir && gir.getAttribute('accept')) || '', yazi = 'Dosya seç';
-    if (/pdf/i.test(kabul) && !/image|jpg|png/i.test(kabul)) yazi = (gir && gir.multiple) ? 'PDF dosyalarını seç' : 'PDF dosyası seç';
-    else if (/image|jpg|jpeg|png|webp|heic|tiff|bmp|svg/i.test(kabul) && !/pdf/i.test(kabul)) yazi = 'Resim seç';
-    var s = document.createElement('span'); s.className = 'kb-sec'; s.setAttribute('aria-hidden', 'true'); s.textContent = yazi;
-    var ic = dz.firstElementChild && dz.firstElementChild.tagName !== 'INPUT' ? dz.firstElementChild : dz;
-    ic.insertBefore(s, ic.firstChild);
-  }
+  /* Araç sayfası: büyük "dosya seç" düğmesi artık kelebek.css'te (::before) çizilir; sayfa açılırken titremez */
+  function aracSayfaKur() { if (document.getElementById('drop-zone')) document.documentElement.classList.add('kb-arac'); }
 
   var vtZ = 0;
-  function vtSonra() { clearTimeout(vtZ); vtZ = setTimeout(function () { try { vtKur(); aracSayfaKur(); } catch (e) {} }, 60); }
+  function vtSonra() {
+    clearTimeout(vtZ);
+    var hemen = !vtArac && document.querySelector('#tool-grid .category-group .tool-card');   /* ilk kurulum beklemeden */
+    vtZ = setTimeout(function () { try { vtKur(); aracSayfaKur(); } catch (e) {} }, hemen ? 0 : 60);
+  }
   function basla() {
     try { kbkKur(); } catch (e) {}
     gozle();

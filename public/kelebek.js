@@ -5,6 +5,9 @@
    2) BentoPDF'te Türkçeye çevrilmemiş kalan yazıları çevirir.
    3) Kelebek üyelerine "Favori Araçlarım" bölümü: kartlardaki ☆ ile seçilir,
       liste Kelebek hesabında saklanır (başka bilgisayarda da gelir).
+   6–8) (28 Ekim 2026) Smallpdf gibi sade kullanım: ana sayfa vitrini ve arama,
+      her indirmede sonuç ekranı (büyük İndir düğmesi, "bu dosyayla devam et"),
+      araç sayfasında büyük "dosya seç" düğmesi.
    ============================================================ */
 (function () {
   'use strict';
@@ -1994,6 +1997,7 @@
           else if (k.type === 'attributes') cevirOge(k.target);
         }
         favoriKartlari();
+        vtSonra();
       } finally { calisiyor = false; }
     }).observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ATTR });
   }
@@ -2145,9 +2149,302 @@
     }
   }
 
+  /* ---------------- 6) Ana sayfa vitrini (28 Ekim 2026) ----------------
+     Smallpdf gibi sade giriş: büyük başlık, ortada arama, en çok kullanılan 6 araç büyük kartta,
+     öteki araçlar 4 başlıkta (ilk 5'i görünür, "+N araç daha" ile açılır). BentoPDF'in kendi ızgarası
+     sayfada kalır (favori bölümü ve gizli kartlar için), yalnız kategori grupları gizlenir.
+     Arama bizim: eş anlamlılarla ("word", "küçült", "resim"…) bütün araçlarda arar. */
+  var VT_POP = [
+    ['compress-pdf', '🗜️', 'Sıkıştır', 'Boyutu küçült', '#fdecea'],
+    ['pdf-to-word', '📄', 'PDF → Word', 'Düzenlenebilir yap', '#e8f0fe'],
+    ['merge-pdf', '➕', 'Birleştir', 'Tek PDF yap', '#eaf6ee'],
+    ['split-pdf', '✂️', 'Böl', 'Sayfaları ayır', '#fff4e0'],
+    ['pdf-to-jpg', '🖼️', 'PDF → Resim', 'JPG, PNG', '#f1eafe'],
+    ['sign-pdf', '✍️', 'İmzala', 'İmza ekle', '#e6f7f8']
+  ];
+  var VT_GRUP = [
+    { ad: 'Dönüştür', e: '🔄', r: '#e8f0fe', kat: ['convert-from-pdf', 'convert-to-pdf'],
+      one: ['pdf-to-word', 'pdf-to-jpg', 'jpg-to-pdf', 'pdf-to-excel', 'word-to-pdf', 'image-to-pdf', 'pdf-to-png'] },
+    { ad: 'Sayfalar', e: '📑', r: '#eaf6ee', kat: ['organize-manage'],
+      one: ['merge-pdf', 'split-pdf', 'organize-pdf', 'delete-pages', 'rotate-pdf', 'extract-pages'] },
+    { ad: 'Düzenle', e: '✏️', r: '#fff4e0', kat: ['edit-annotate', 'popular-tools'],
+      one: ['edit-pdf', 'sign-pdf', 'add-watermark', 'page-numbers', 'form-filler', 'crop-pdf'] },
+    { ad: 'Küçült ve koru', e: '🔒', r: '#fdecea', kat: ['optimize-repair', 'secure-pdf'],
+      one: ['compress-pdf', 'protect-pdf', 'unlock-pdf', 'ocr-pdf', 'repair-pdf', 'remove-restrictions'] }
+  ];
+  var VT_TASI = { 'ocr-pdf': 3 };          /* aracın gideceği grup (VT_GRUP sırası) BentoPDF'inkinden farklıysa */
+  var VT_GOSTER = 5;
+  var VT_ES = { compress: 'kucult sikistir boyut kucuk mb', word: 'docx doc word', docx: 'word', jpg: 'resim foto fotograf jpeg', jpeg: 'resim', png: 'resim',
+    image: 'resim foto gorsel', webp: 'resim', merge: 'birlestir birles tek', split: 'bol ayir parcala', rotate: 'dondur cevir', sign: 'imza imzala',
+    protect: 'sifre kilit koru parola', unlock: 'sifre kaldir ac kilit', excel: 'xlsx tablo', csv: 'tablo', ocr: 'yazi tanima tarama taranmis', delete: 'sil',
+    watermark: 'filigran', crop: 'kirp', organize: 'sirala duzenle', extract: 'ayikla cikar', edit: 'duzenle yaz', text: 'yazi metin', form: 'form doldur',
+    numbers: 'numara sayfa', repair: 'onar bozuk', powerpoint: 'pptx sunum', markdown: 'md', compare: 'karsilastir', metadata: 'bilgi' };
+  var vtArac = null, vtKurulu = '';
+  function vtNorm(s) {
+    return String(s || '').toLocaleLowerCase('tr').replace(/[çğıöşüâî]/g, function (c) { return { 'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u', 'â': 'a', 'î': 'i' }[c]; })
+      .replace(/[→’'`]/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+  function vtEsc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function vtTopla(izgara) {
+    var l = {}, sira = [];
+    var gruplar = izgara.querySelectorAll('.category-group');
+    for (var g = 0; g < gruplar.length; g++) {
+      var m = /is-cat-([a-z0-9-]+)/.exec(gruplar[g].className), kat = m ? m[1] : '';
+      var kartlar = gruplar[g].querySelectorAll('.tool-card');
+      for (var i = 0; i < kartlar.length; i++) {
+        var k = kartlar[i], id = aracKimlik(k); if (!id) continue;
+        var h3 = k.querySelector('h3'), p = k.querySelector('p');
+        if (!l[id]) { l[id] = { id: id, kart: k, href: k.getAttribute('href'), ad: h3 ? h3.textContent.trim() : id, alt: p ? p.textContent.trim() : '', kat: [] }; sira.push(id); }
+        if (kat && l[id].kat.indexOf(kat) < 0) l[id].kat.push(kat);
+      }
+    }
+    sira.forEach(function (id) {
+      var a = l[id];
+      a.ara = vtNorm(a.ad + ' ' + a.alt + ' ' + id.replace(/-/g, ' ')) + ' ' + id.split('-').map(function (p) { return VT_ES[p] || ''; }).join(' ');
+    });
+    return { l: l, sira: sira };
+  }
+  function vtBag(a, sinif, ic) {
+    if (a.href) return '<a class="' + sinif + '" href="' + vtEsc(a.href) + '">' + ic + '</a>';
+    return '<button type="button" class="' + sinif + '" data-kbvt="' + vtEsc(a.id) + '">' + ic + '</button>';
+  }
+  function vtGrupDagit(A) {
+    var gr = VT_GRUP.map(function () { return []; }), ata = {};
+    A.sira.forEach(function (id) {
+      var a = A.l[id], yer = VT_TASI.hasOwnProperty(id) ? VT_TASI[id] : -1;
+      if (yer < 0) for (var g = 0; g < VT_GRUP.length && yer < 0; g++) for (var k = 0; k < VT_GRUP[g].kat.length; k++)
+        if (a.kat.indexOf(VT_GRUP[g].kat[k]) >= 0 && (VT_GRUP[g].kat[k] !== 'popular-tools' || a.kat.length === 1)) { yer = g; break; }
+      if (yer < 0) yer = 2;
+      if (!ata[id]) { ata[id] = 1; gr[yer].push(id); }
+    });
+    return gr.map(function (l, g) {
+      var one = VT_GRUP[g].one;
+      return l.sort(function (x, y) { var a = one.indexOf(x), b = one.indexOf(y); return (a < 0 ? 99 : a) - (b < 0 ? 99 : b); });
+    });
+  }
+  function vtKur() {
+    var izgara = document.getElementById('tool-grid'), gv = document.getElementById('grid-view');
+    if (!izgara || !gv || !izgara.querySelector('.category-group .tool-card')) return;
+    var A = vtTopla(izgara), imza = A.sira.join(',');
+    if (imza === vtKurulu && document.getElementById('kb-gruplar')) return;
+    vtKurulu = imza; vtArac = A;
+    document.documentElement.classList.add('kb-vitrin');
+    var ara = document.getElementById('search-bar'), araKap = ara && ara.closest('.mb-8');
+    var kah = document.getElementById('kb-kahraman');
+    if (!kah) {
+      kah = document.createElement('div'); kah.id = 'kb-kahraman';
+      kah.innerHTML = '<h1>PDF ile ne yapmak istiyorsun?</h1><p>Ücretsiz · üyelik gerekmez · dosyaların bilgisayarından çıkmaz</p>';
+      gv.insertBefore(kah, gv.firstChild);
+      if (araKap) { araKap.classList.add('kb-ara-kap'); kah.appendChild(araKap); }
+      if (ara) ara.setAttribute('placeholder', 'Ne yapmak istiyorsun? (ör. word, küçült)');
+    }
+    var pop = document.getElementById('kb-populer');
+    if (!pop) { pop = document.createElement('div'); pop.id = 'kb-populer'; gv.insertBefore(pop, izgara); }
+    pop.innerHTML = VT_POP.filter(function (p) { return A.l[p[0]]; }).map(function (p) {
+      return vtBag(A.l[p[0]], 'kb-pop', '<span class="kb-pop-ik" style="background:' + p[4] + '">' + p[1] + '</span><b>' + p[2] + '</b><small>' + p[3] + '</small>');
+    }).join('');
+    var sonuc = document.getElementById('kb-sonuc-ara');
+    if (!sonuc) { sonuc = document.createElement('div'); sonuc.id = 'kb-sonuc-ara'; gv.insertBefore(sonuc, izgara); }
+    var gr = document.getElementById('kb-gruplar');
+    if (!gr) { gr = document.createElement('div'); gr.id = 'kb-gruplar'; izgara.parentNode.insertBefore(gr, izgara.nextSibling); }
+    var dag = vtGrupDagit(A);
+    gr.innerHTML = '<p class="kb-bas">Tüm araçlar <span>' + A.sira.length + ' araç</span></p><div class="kb-grup-izgara">' + VT_GRUP.map(function (G, g) {
+      var l = dag[g]; if (!l.length) return '';
+      var ilk = l.slice(0, VT_GOSTER), kalan = l.slice(VT_GOSTER);
+      return '<div class="kb-grup"><h3><i style="background:' + G.r + '">' + G.e + '</i>' + G.ad + '</h3>' +
+        ilk.map(function (id) { return vtBag(A.l[id], 'kb-grup-a', vtEsc(A.l[id].ad)); }).join('') +
+        (kalan.length ? '<div class="kb-grup-ek" hidden>' + kalan.map(function (id) { return vtBag(A.l[id], 'kb-grup-a', vtEsc(A.l[id].ad)); }).join('') + '</div>' +
+          '<button type="button" class="kb-grup-tum" data-kbek="' + kalan.length + '">+ ' + kalan.length + ' araç daha</button>' : '') + '</div>';
+    }).join('') + '</div><p class="kb-dip">Aradığını bulamadın mı? Üstteki kutuya yaz: “word”, “küçült”, “döndür”…</p>';
+    if (ara && ara.value.trim()) vtAra(ara.value);
+  }
+  function vtAra(q) {
+    var s = document.getElementById('kb-sonuc-ara'); if (!s || !vtArac) return;
+    var n = vtNorm(q), html = document.documentElement;
+    html.classList.toggle('kb-ariyor', !!n);
+    if (!n) { s.innerHTML = ''; return; }
+    var parca = n.split(' '), bulunan = vtArac.sira.filter(function (id) {
+      var h = vtArac.l[id].ara; return parca.every(function (p) { return h.indexOf(p) >= 0; });
+    });
+    bulunan.sort(function (x, y) {
+      var a = vtNorm(vtArac.l[x].ad).indexOf(parca[0]) >= 0 ? 0 : 1, b = vtNorm(vtArac.l[y].ad).indexOf(parca[0]) >= 0 ? 0 : 1; return a - b;
+    });
+    s.innerHTML = bulunan.length
+      ? '<p class="kb-bas">' + bulunan.length + ' araç bulundu</p><div class="kb-sonuc-izgara">' + bulunan.map(function (id) {
+          var a = vtArac.l[id]; return vtBag(a, 'kb-sonuc-k', '<b>' + vtEsc(a.ad) + '</b><small>' + vtEsc(a.alt) + '</small>');
+        }).join('') + '</div>'
+      : '<p class="kb-bos">“' + vtEsc(q.trim()) + '” için araç bulunamadı. Başka bir kelime dene: “word”, “resim”, “küçült”…</p>';
+  }
+  /* BentoPDF'in kendi aramasından önce yakalanır (belge yakalama evresi) */
+  document.addEventListener('input', function (e) {
+    if (!e.target || e.target.id !== 'search-bar' || !vtArac) return;
+    e.stopImmediatePropagation();
+    vtAra(e.target.value);
+  }, true);
+  document.addEventListener('keydown', function (e) {
+    if (!e.target || e.target.id !== 'search-bar' || e.key !== 'Enter') return;
+    var ilk = document.querySelector('#kb-sonuc-ara .kb-sonuc-k'); if (ilk) { e.preventDefault(); ilk.click(); }
+  }, true);
+  document.addEventListener('click', function (e) {
+    var t = e.target && e.target.closest; if (!t) return;
+    var ek = e.target.closest('.kb-grup-tum');
+    if (ek) { var kut = ek.previousElementSibling, ac = kut.hidden; kut.hidden = !ac; ek.textContent = ac ? 'Daha az göster' : '+ ' + ek.getAttribute('data-kbek') + ' araç daha'; return; }
+    var b = e.target.closest('[data-kbvt]');
+    if (b && vtArac && vtArac.l[b.getAttribute('data-kbvt')]) { e.preventDefault(); vtArac.l[b.getAttribute('data-kbvt')].kart.click(); }
+  });
+
+  /* ---------------- 7) Sonuç ekranı: büyük "İndir" düğmesi (28 Ekim 2026) ----------------
+     BentoPDF sonucu yalnız kendiliğinden indiriyordu; tarayıcı ya da kurum ağı bu indirmeyi
+     engelleyince kullanıcı hiçbir şey görmüyordu. Artık her indirmede tam sayfa bir sonuç ekranı
+     açılır: dosya adı ve boyutu, büyük İndir düğmesi (kullanıcının kendi tıklaması; engellenmez),
+     Baştan başla ve PDF sonuçlarında "Bu dosyayla devam et" (dosya sıradaki araca kendiliğinden yüklenir).
+     Dosya cihazdan çıkmaz: yalnız bu tarayıcının belleğinde ve devam için kısa süre IndexedDB'de durur. */
+  var SN_BLOB = {}, SN_SIRA = [], snListe = [], snAn = 0;
+  try {
+    var asilUrl = URL.createObjectURL.bind(URL);
+    URL.createObjectURL = function (o) {
+      var u = asilUrl(o);
+      try { if (o instanceof Blob) { SN_BLOB[u] = o; SN_SIRA.push(u); if (SN_SIRA.length > 30) delete SN_BLOB[SN_SIRA.shift()]; } } catch (e) {}
+      return u;
+    };
+    var asilTik = HTMLAnchorElement.prototype.click;
+    HTMLAnchorElement.prototype.click = function () {
+      try {
+        if (this.hasAttribute('download') && !this.hasAttribute('data-kbsn') && /^blob:/.test(this.href) && SN_BLOB[this.href])
+          snEkle(SN_BLOB[this.href], this.getAttribute('download') || 'dosya');
+      } catch (e) {}
+      return asilTik.apply(this, arguments);
+    };
+  } catch (e) {}
+  function snBoyut(n) { return n < 1024 ? n + ' B' : n < 1048576 ? Math.round(n / 1024) + ' KB' : (n / 1048576).toFixed(1).replace('.', ',') + ' MB'; }
+  function snUzanti(ad) { var m = /\.([a-z0-9]+)$/i.exec(ad || ''); return m ? m[1].toLowerCase() : ''; }
+  var SN_TUR = { docx: ['Word belgen hazır', 'DOCX', '#2b5fbf', 'Word dosyasını indir'], doc: ['Word belgen hazır', 'DOC', '#2b5fbf', 'Word dosyasını indir'],
+    xlsx: ['Excel dosyan hazır', 'XLSX', '#1e7b45', 'Excel dosyasını indir'], csv: ['Tablon hazır', 'CSV', '#1e7b45', 'Dosyayı indir'],
+    pptx: ['Sunumun hazır', 'PPTX', '#c4501f', 'Sunumu indir'], pdf: ['PDF’in hazır', 'PDF', '#e5483a', 'PDF’i indir'],
+    zip: ['Dosyaların hazır', 'ZIP', '#5b6587', 'ZIP dosyasını indir'], jpg: ['Resmin hazır', 'JPG', '#7b4fd6', 'Resmi indir'], jpeg: ['Resmin hazır', 'JPG', '#7b4fd6', 'Resmi indir'],
+    png: ['Resmin hazır', 'PNG', '#7b4fd6', 'Resmi indir'], webp: ['Resmin hazır', 'WEBP', '#7b4fd6', 'Resmi indir'], txt: ['Metnin hazır', 'TXT', '#5b6587', 'Dosyayı indir'] };
+  var SN_DEVAM = [['compress-pdf', '🗜️', 'Sıkıştır'], ['merge-pdf', '➕', 'Başka PDF’le birleştir'], ['pdf-to-jpg', '🖼️', 'Resme çevir'], ['sign-pdf', '✍️', 'İmzala'], ['pdf-to-word', '📄', 'Word’e çevir'], ['protect-pdf', '🔒', 'Şifre koy']];
+  function snAdres(id) {
+    var y = location.pathname, uz = /\.html$/.test(y) ? '.html' : '';
+    return y.replace(/[^\/]*$/, id + uz) + location.search;
+  }
+  function snEkle(blob, ad) {
+    var simdi = Date.now();
+    if (simdi - snAn > 4000) snListe = [];
+    snAn = simdi; snListe.push({ blob: blob, ad: ad });
+    snCiz();
+  }
+  function snCiz() {
+    var ek = document.getElementById('kb-sonuc');
+    if (!ek) { ek = document.createElement('div'); ek.id = 'kb-sonuc'; ek.setAttribute('role', 'dialog'); ek.setAttribute('aria-modal', 'true'); document.body.appendChild(ek); }
+    var tek = snListe.length === 1, ilk = snListe[0], uz = snUzanti(ilk.ad), tur = tek ? (SN_TUR[uz] || ['Dosyan hazır', (uz || 'DOSYA').toUpperCase().slice(0, 5), '#5b6587', 'Dosyayı indir']) : ['Dosyaların hazır', '', '', 'İndir'];
+    var buSayfa = kbkSayfa();
+    var dosyalar = snListe.map(function (d, i) {
+      var u2 = snUzanti(d.ad), t2 = SN_TUR[u2] || [0, (u2 || 'DOSYA').toUpperCase().slice(0, 5), '#5b6587', 'Dosyayı indir'];
+      return '<div class="kb-sn-dosya"><div class="kb-sn-on"><i></i><i></i><i></i><i style="width:60%"></i><i></i><i style="width:80%"></i><b style="background:' + t2[2] + '">' + vtEsc(t2[1]) + '</b></div>' +
+        '<div class="kb-sn-bilgi"><div class="kb-sn-ad">' + vtEsc(d.ad) + '</div><small>' + snBoyut(d.blob.size) + '</small>' +
+        '<div class="kb-sn-dug"><button type="button" class="kb-sn-indir" data-kbsni="' + i + '">⬇ ' + (tek ? tur[3] : 'İndir') + '</button>' +
+        (i === 0 ? '<button type="button" class="kb-sn-yeni" data-kbsnyeni>↺ Baştan başla</button>' : '') + '</div></div></div>';
+    }).join('');
+    var devam = (tek && uz === 'pdf') ? '<p class="kb-bas">Bu dosyayla devam et</p><div class="kb-sn-devam">' + SN_DEVAM.filter(function (d) { return d[0] !== buSayfa; }).slice(0, 4).map(function (d) {
+      return '<button type="button" data-kbsndevam="' + d[0] + '"><span>' + d[1] + '</span>' + d[2] + '</button>'; }).join('') + '</div>' : '';
+    ek.innerHTML = '<div class="kb-sn-ic"><button type="button" class="kb-sn-kapat" data-kbsnkapat aria-label="Kapat">✕</button>' +
+      '<div class="kb-sn-tik">✓</div><h2>' + tur[0] + '</h2><p class="kb-sn-alt">İndirme kendiliğinden başlamadıysa aşağıdaki düğmeye bas.</p>' +
+      dosyalar + devam + '<button type="button" class="kb-sn-baska" data-kbsnyeni>+ Başka bir dosyayla devam et</button></div>';
+    ek.classList.add('acik'); document.documentElement.classList.add('kb-sonuc-acik');
+    try { ek.scrollTop = 0; ek.querySelector('.kb-sn-indir').focus({ preventScroll: true }); } catch (e) {}
+  }
+  function snKapat() { var ek = document.getElementById('kb-sonuc'); if (ek) ek.classList.remove('acik'); document.documentElement.classList.remove('kb-sonuc-acik'); }
+  function snIndir(d) {
+    var u = URL.createObjectURL(d.blob), a = document.createElement('a');
+    a.href = u; a.download = d.ad; a.setAttribute('data-kbsn', '1'); a.style.display = 'none'; document.body.appendChild(a);
+    HTMLAnchorElement.prototype.click.call(a); a.remove();
+    setTimeout(function () { try { URL.revokeObjectURL(u); } catch (e) {} }, 60000);
+  }
+  /* devam: dosya kısa süre IndexedDB'de bekler, sıradaki araç açılınca dosya kutusuna konur */
+  function snDb(fn) {
+    try {
+      var r = indexedDB.open('kb-devam', 1);
+      r.onupgradeneeded = function () { r.result.createObjectStore('f'); };
+      r.onsuccess = function () { try { fn(r.result); } catch (e) {} };
+    } catch (e) {}
+  }
+  function snDevamGit(id) {
+    var d = snListe[0]; if (!d) return;
+    var git = function () { location.href = snAdres(id); };
+    var bitti = false, son = function () { if (!bitti) { bitti = true; git(); } };
+    snDb(function (db) {
+      var tx = db.transaction('f', 'readwrite'); tx.objectStore('f').put({ blob: d.blob, ad: d.ad, t: Date.now() }, 'son');
+      tx.oncomplete = son; tx.onerror = son;
+    });
+    setTimeout(son, 1500);
+  }
+  function snDevamAl() {
+    snDb(function (db) {
+      var tx = db.transaction('f', 'readwrite'), st = tx.objectStore('f'), r = st.get('son');
+      r.onsuccess = function () {
+        var v = r.result; st.delete('son');
+        if (!v || !v.blob || Date.now() - v.t > 180000) return;
+        var dene = 0;
+        (function koy() {
+          var g = document.getElementById('file-input') || document.querySelector('input[type=file]');
+          if (!g) { if (++dene < 40) setTimeout(koy, 150); return; }
+          try {
+            var dt = new DataTransfer(); dt.items.add(new File([v.blob], v.ad, { type: v.blob.type || 'application/pdf' }));
+            g.files = dt.files; g.dispatchEvent(new Event('change', { bubbles: true }));
+            snBildir('“' + v.ad + '” yüklendi');
+          } catch (e) {}
+        })();
+      };
+    });
+  }
+  function snBildir(m) {
+    var b = document.createElement('div'); b.className = 'kb-sn-bildir'; b.textContent = m; document.body.appendChild(b);
+    setTimeout(function () { b.classList.add('git'); }, 2600); setTimeout(function () { b.remove(); }, 3200);
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target && e.target.closest && e.target.closest('[data-kbsni],[data-kbsnyeni],[data-kbsnkapat],[data-kbsndevam]'); if (!t) return;
+    e.preventDefault();
+    if (t.hasAttribute('data-kbsni')) { var d = snListe[+t.getAttribute('data-kbsni')]; if (d) snIndir(d); return; }
+    if (t.hasAttribute('data-kbsnkapat')) { snKapat(); return; }
+    if (t.hasAttribute('data-kbsndevam')) { snDevamGit(t.getAttribute('data-kbsndevam')); return; }
+    snKapat(); location.href = location.pathname + location.search;
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.documentElement.classList.contains('kb-sonuc-acik')) snKapat(); });
+  /* İndirmeden hemen sonra BentoPDF'in "tamamlandı" penceresi açılırsa onu kapat (sonuç ekranı zaten açık). Hata pencereleri dokunulmaz. */
+  function snUyariGozle() {
+    var m = document.getElementById('alert-modal'); if (!m) return;
+    new MutationObserver(function () {
+      if (m.classList.contains('hidden') || Date.now() - snAn > 5000 || !document.documentElement.classList.contains('kb-sonuc-acik')) return;
+      var bas = (document.getElementById('alert-title') || {}).textContent || '';
+      if (/hata|error|uyarı|warning|başarısız|failed/i.test(bas)) return;
+      var ok = document.getElementById('alert-ok'); if (ok) ok.click(); else m.classList.add('hidden');
+    }).observe(m, { attributes: true, attributeFilter: ['class'] });
+  }
+  /* Dönüştürücü (PyMuPDF, Ghostscript…) internetten inemezse açık bir açıklama */
+  KALIP.unshift([/^.*(Failed to fetch dynamically imported module|NetworkError when attempting to fetch|Load failed).*$/, 'Gerekli dosya internetten indirilemedi. Bağlantını kontrol et; okul ya da kurum ağındaysan başka bir ağda yeniden dene.']);
+  KALIP.unshift([/^.*Failed to load [A-Za-z0-9.\- ]+ from CDN.*$/, 'Dönüştürücü indirilemedi. Bu araç ilk kullanımda dönüştürme motorunu cdn.jsdelivr.net adresinden indirir; bulunduğun ağ (okul ya da kurum ağı) bu adresi engelliyor olabilir. Başka bir ağda (ör. telefonun internetiyle) yeniden dene.']);
+
+  /* Araç sayfası: dosya alanında büyük "dosya seç" düğmesi */
+  function aracSayfaKur() {
+    var dz = document.getElementById('drop-zone'), gir = dz && dz.querySelector('input[type=file]');
+    if (!dz || dz.querySelector('.kb-sec')) return;
+    document.documentElement.classList.add('kb-arac');
+    var kabul = (gir && gir.getAttribute('accept')) || '', yazi = 'Dosya seç';
+    if (/pdf/i.test(kabul) && !/image|jpg|png/i.test(kabul)) yazi = (gir && gir.multiple) ? 'PDF dosyalarını seç' : 'PDF dosyası seç';
+    else if (/image|jpg|jpeg|png|webp|heic|tiff|bmp|svg/i.test(kabul) && !/pdf/i.test(kabul)) yazi = 'Resim seç';
+    var s = document.createElement('span'); s.className = 'kb-sec'; s.setAttribute('aria-hidden', 'true'); s.textContent = yazi;
+    var ic = dz.firstElementChild && dz.firstElementChild.tagName !== 'INPUT' ? dz.firstElementChild : dz;
+    ic.insertBefore(s, ic.firstChild);
+  }
+
+  var vtZ = 0;
+  function vtSonra() { clearTimeout(vtZ); vtZ = setTimeout(function () { try { vtKur(); aracSayfaKur(); } catch (e) {} }, 60); }
   function basla() {
     try { kbkKur(); } catch (e) {}
     gozle();
+    vtSonra();
+    try { snUyariGozle(); snDevamAl(); } catch (e) {}
     ebeveyneGonder({ kb: 'hazir' });
     /* arama yapılırken favori bölümünü gizle (BentoPDF kategorileri gizlediği gibi) */
     document.addEventListener('input', function (e) {

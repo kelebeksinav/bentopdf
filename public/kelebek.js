@@ -2019,6 +2019,17 @@
       (dolu ? '#f5b301' : 'currentColor') + '" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3.2l2.7 5.5 6 .9-4.35 4.25 1 6L12 17l-5.35 2.85 1-6L3.3 9.6l6-.9z"/></svg>';
   }
   function kaydet() { ebeveyneGonder({ kb: 'favoriKaydet', liste: favoriler.slice(0, 40) }); }
+  function yildizEkle(k, id) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'kb-yildiz'; b.setAttribute('data-arac', id);
+    k.style.position = 'relative'; k.appendChild(b);
+    b.addEventListener('click', function (e) {
+      e.preventDefault(); e.stopPropagation();
+      var a = this.getAttribute('data-arac'), yer = favoriler.indexOf(a);
+      if (yer >= 0) favoriler.splice(yer, 1); else favoriler.push(a);
+      kaydet(); favoriCiz();
+    });
+  }
   function favoriKartlari() {
     var izgara = document.getElementById('tool-grid');
     if (!izgara || !uye) return;
@@ -2027,15 +2038,14 @@
       var k = kartlar[i];
       if (k.querySelector('.kb-yildiz')) continue;
       var id = aracKimlik(k); if (!id) continue;
-      var b = document.createElement('button');
-      b.type = 'button'; b.className = 'kb-yildiz'; b.setAttribute('data-arac', id);
-      k.style.position = 'relative'; k.appendChild(b);
-      b.addEventListener('click', function (e) {
-        e.preventDefault(); e.stopPropagation();
-        var a = this.getAttribute('data-arac'), yer = favoriler.indexOf(a);
-        if (yer >= 0) favoriler.splice(yer, 1); else favoriler.push(a);
-        kaydet(); favoriCiz();
-      });
+      yildizEkle(k, id);
+    }
+    /* 30 Ekim: yeni vitrinde kategori kartları gizli; yıldızlar vitrin satırlarına ve arama sonuçlarına */
+    var vk = document.querySelectorAll('#kb-gruplar .kb-grup-a, #kb-sonuc-ara .kb-sonuc-k');
+    for (var j = 0; j < vk.length; j++) {
+      if (vk[j].querySelector('.kb-yildiz')) continue;
+      var vid = vk[j].getAttribute('data-kbvt') || aracKimlik(vk[j]); if (!vid) continue;
+      yildizEkle(vk[j], vid);
     }
     yildizlariGuncelle();
     if (!document.getElementById('kb-favori')) favoriCiz();
@@ -2066,6 +2076,19 @@
     var kap = document.createElement('div');
     kap.className = 'kb-favori-kartlar grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6';
     var sayi = 0;
+    /* 30 Ekim: yeni vitrinde favoriler vitrinin kendi tarzında (simge + ad), BentoPDF kartları değil */
+    if (vtArac && document.getElementById('kb-gruplar')) {
+      kap.className = 'kb-fav-izgara';
+      favoriler.forEach(function (id) {
+        var a = vtArac.l[id]; if (!a) return;
+        var t = document.createElement('div'); t.innerHTML = vtBag(a, 'kb-fav-a', a.ik + '<span>' + vtEsc(a.ad) + '</span>');
+        var el = t.firstChild, cik = document.createElement('button'); cik.type = 'button'; cik.className = 'kb-yildiz dolu';
+        cik.setAttribute('data-arac', id); cik.innerHTML = yildizSvg(true); cik.title = 'Favorilerden çıkar'; cik.setAttribute('aria-label', cik.title);
+        cik.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); favoriler = favoriler.filter(function (x) { return x !== id; }); kaydet(); favoriCiz(); });
+        el.appendChild(cik); kap.appendChild(el); sayi++;
+      });
+      favoriler = favoriler.slice();
+    } else
     favoriler.forEach(function (id) {
       var asil = kaynak[id]; if (!asil) return;
       var kopya = asil.cloneNode(true);
@@ -2082,7 +2105,7 @@
     });
     if (!sayi) {
       var bos = document.createElement('p'); bos.className = 'kb-favori-bos';
-      bos.textContent = 'Sık kullandığınız araçları, kartların sağ üstündeki ☆ işaretine basarak buraya ekleyin.';
+      bos.textContent = 'Sık kullandığınız araçları, aşağıdaki listede araç adının yanındaki ☆ işaretine basarak buraya ekleyin.';
       bolum.appendChild(bos);
     } else bolum.appendChild(kap);
     yildizlariGuncelle();
@@ -2274,6 +2297,7 @@
     }).join('') + '</div><p class="kb-dip">Aradığını bulamadın mı? Üstteki kutuya yaz: “word”, “küçült”, “döndür”…</p>';
     [].forEach.call(gr.querySelectorAll('.kb-grup-ek'), function (e, i) { if (acik[i]) { e.hidden = false; var b = e.nextElementSibling; if (b) b.textContent = 'Daha az göster'; } });
     if (ara && ara.value.trim()) vtAra(ara.value);
+    if (uye && favoriHazir) favoriCiz();   /* 30 Ekim: favoriler vitrin tarzında yeniden */
   }
   function vtAra(q) {
     var s = document.getElementById('kb-sonuc-ara'); if (!s || !vtArac) return;

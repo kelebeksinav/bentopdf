@@ -2,10 +2,14 @@ import forge from 'node-forge';
 import { SignatureValidationResult } from '@/types';
 import type { ExtractedSignatureWithError, PdfValueSpan } from '@/types';
 
+import { trText } from '../i18n/i18n.js';
+
 const INSECURE_DIGEST_OIDS = new Set<string>([
   '1.2.840.113549.2.5',
   '1.3.14.3.2.26',
 ]);
+
+const MIN_RSA_EXPONENT = new forge.jsbn.BigInteger('65537');
 
 const PDF_WHITESPACE = new Set('\0\t\n\f\r ');
 const PDF_TOKEN_TERMINATORS = new Set('\0\t\n\f\r ()<>[]{}/%');
@@ -26,7 +30,7 @@ export function extractSignatures(
   const signatures: ExtractedSignatureWithError[] = [];
   const pdfString = new TextDecoder('latin1').decode(pdfBytes);
 
-  // Find all signature objects for /Type /Sig
+  // Find all signature dictionaries (see isSignatureDictionary)
   const objectHeader = /\d+\s+\d+\s+obj\b/g;
   let endobj = -1;
 
@@ -48,8 +52,7 @@ export function extractSignatures(
     if (end < 0) continue;
 
     for (const entries of dictionaries) {
-      const type = entries.get('Type');
-      if (type && pdfString.slice(type.start, type.end) === '/Sig') {
+      if (isSignatureDictionary(pdfString, entries)) {
         signatures.push(
           readSignatureDictionary(
             pdfString,
@@ -63,6 +66,30 @@ export function extractSignatures(
   }
 
   return signatures;
+}
+
+/**
+ * /Type is optional in a signature dictionary (PDF 32000-1, 12.8.1, Table
+ * 252), and some signers leave it out, so a dictionary without /Type that
+ * carries both /ByteRange and /Contents is a signature too. Document
+ * timestamps (/Type /DocTimeStamp, /SubFilter /ETSI.RFC3161) hold an RFC 3161
+ * token rather than a CMS signature over the document and stay out.
+ */
+function isSignatureDictionary(
+  pdfString: string,
+  entries: Map<string, PdfValueSpan>
+): boolean {
+  const name = (key: string) => {
+    const span = entries.get(key);
+    return span ? pdfString.slice(span.start, span.end) : undefined;
+  };
+  const type = name('Type');
+  if (type !== undefined) return type === '/Sig';
+  return (
+    entries.has('ByteRange') &&
+    entries.has('Contents') &&
+    name('SubFilter') !== '/ETSI.RFC3161'
+  );
 }
 
 function readSignatureDictionary(
@@ -95,8 +122,9 @@ function readSignatureDictionary(
       )
     : null;
   if (!rangeMatch) {
-    signature.extractionError =
-      'Signature has a missing or malformed /ByteRange';
+    signature.extractionError = trText(
+      'Signature has a missing or malformed /ByteRange'
+    );
     return signature;
   }
 
@@ -114,15 +142,17 @@ function readSignatureDictionary(
   const gapEnd = signature.byteRange[2];
   const gap = pdfString.slice(gapStart, gapEnd);
   if (gap.length % 2 !== 0 || !/^<[0-9A-Fa-f]+>$/.test(gap)) {
-    signature.extractionError =
-      'The bytes excluded by /ByteRange are not exactly a hex-encoded signature';
+    signature.extractionError = trText(
+      'The bytes excluded by /ByteRange are not exactly a hex-encoded signature'
+    );
     return signature;
   }
 
   const contentsSpan = entries.get('Contents');
   if (contentsSpan?.start !== gapStart || contentsSpan.end !== gapEnd) {
-    signature.extractionError =
-      'The bytes excluded by /ByteRange are not the /Contents of this signature';
+    signature.extractionError = trText(
+      'The bytes excluded by /ByteRange are not the /Contents of this signature'
+    );
     return signature;
   }
 
@@ -133,8 +163,9 @@ function readSignatureDictionary(
     derObjectLength > contents.length ||
     contents.subarray(derObjectLength).some((byte) => byte !== 0)
   ) {
-    signature.extractionError =
-      'Signature /Contents is not a single DER object followed by zero padding';
+    signature.extractionError = trText(
+      'Signature /Contents is not a single DER object followed by zero padding'
+    );
     return signature;
   }
 
@@ -150,14 +181,14 @@ function getByteRangeError(
     byteRange.length !== 4 ||
     !byteRange.every((value) => Number.isSafeInteger(value) && value >= 0)
   ) {
-    return 'Malformed ByteRange';
+    return trText('Malformed ByteRange');
   }
   const [start1, len1, start2, len2] = byteRange;
   if (start1 !== 0) {
-    return 'ByteRange does not start at the beginning of the file';
+    return trText('ByteRange does not start at the beginning of the file');
   }
   if (start1 + len1 > start2 || start2 + len2 > fileLength) {
-    return 'ByteRange out of bounds';
+    return trText('ByteRange out of bounds');
   }
   return null;
 }
@@ -297,14 +328,14 @@ export async function validateSignature(
   const result: SignatureValidationResult = {
     signatureIndex: signature.index,
     isValid: false,
-    signerName: 'Unknown',
-    issuer: 'Unknown',
+    signerName: trText('Unknown'),
+    issuer: trText('Unknown'),
     validFrom: new Date(0),
     validTo: new Date(0),
     isExpired: false,
     isSelfSigned: false,
     isTrusted: false,
-    algorithms: { digest: 'Unknown', signature: 'Unknown' },
+    algorithms: { digest: trText('Unknown'), signature: trText('Unknown') },
     serialNumber: '',
     byteRange: signature.byteRange,
     coverageStatus: 'unknown',
@@ -340,7 +371,7 @@ export async function validateSignature(
     };
 
     if (!p7.certificates || p7.certificates.length === 0) {
-      result.errorMessage = 'No certificates found in signature';
+      result.errorMessage = trText('No certificates found in signature');
       return result;
     }
 
@@ -350,6 +381,10 @@ export async function validateSignature(
       p7.rawCapture?.issuer,
       p7.rawCapture?.serial
     );
+    if (!signerCert) {
+      result.errorMessage = trText('Could not parse signer info');
+      return result;
+    }
 
     const subjectCN = signerCert.subject.getField('CN');
     const subjectO = signerCert.subject.getField('O');
@@ -359,10 +394,10 @@ export async function validateSignature(
     const issuerCN = signerCert.issuer.getField('CN');
     const issuerO = signerCert.issuer.getField('O');
 
-    result.signerName = (subjectCN?.value as string) ?? 'Unknown';
+    result.signerName = (subjectCN?.value as string) ?? trText('Unknown');
     result.signerOrg = subjectO?.value as string | undefined;
     result.signerEmail = subjectE?.value as string | undefined;
-    result.issuer = (issuerCN?.value as string) ?? 'Unknown';
+    result.issuer = (issuerCN?.value as string) ?? trText('Unknown');
     result.issuerOrg = issuerO?.value as string | undefined;
     result.validFrom = signerCert.validity.notBefore;
     result.validTo = signerCert.validity.notAfter;
@@ -464,7 +499,7 @@ export async function validateSignature(
       result.unsupportedAlgorithmReason = verification.reason;
     } else if (verification.status === 'failed') {
       result.errorMessage =
-        verification.reason || 'Cryptographic verification failed';
+        verification.reason || trText('Cryptographic verification failed');
     }
 
     result.isValid =
@@ -473,7 +508,7 @@ export async function validateSignature(
       !result.usesInsecureDigest;
   } catch (e) {
     result.errorMessage =
-      e instanceof Error ? e.message : 'Failed to parse signature';
+      e instanceof Error ? e.message : trText('Failed to parse signature');
   }
 
   return result;
@@ -483,7 +518,7 @@ function findSignerCertificate(
   certificates: forge.pki.Certificate[],
   issuer: forge.asn1.Asn1 | undefined,
   serial: string | undefined
-): forge.pki.Certificate {
+): forge.pki.Certificate | null {
   if (issuer && serial) {
     const serialHex = forge.util.createBuffer(serial).toHex();
     const issuerDer = forge.asn1.toDer(issuer).getBytes();
@@ -494,15 +529,21 @@ function findSignerCertificate(
           .toDer(forge.pki.distinguishedNameToAsn1(cert.issuer))
           .getBytes() === issuerDer
     );
-    if (match) return match;
+    return match ?? null;
   }
   return certificates[0];
+}
+
+function hasLowRsaExponent(key: unknown): boolean {
+  const exponent = (key as Partial<forge.pki.rsa.PublicKey> | undefined)?.e;
+  return !!exponent && exponent.compareTo(MIN_RSA_EXPONENT) < 0;
 }
 
 function isIssuedBy(
   issuer: forge.pki.Certificate,
   child: forge.pki.Certificate
 ): boolean {
+  if (hasLowRsaExponent(issuer.publicKey)) return false;
   try {
     return issuer.verify(child);
   } catch {
@@ -574,7 +615,7 @@ function getDigestAlgorithmName(oid: string): string {
     '2.16.840.1.101.3.4.2.3': 'SHA-512',
     '2.16.840.1.101.3.4.2.4': 'SHA-224',
   };
-  return digestAlgorithms[oid] || oid || 'Unknown';
+  return digestAlgorithms[oid] || oid || trText('Unknown');
 }
 
 function getSignatureAlgorithmName(oid: string): string {
@@ -590,7 +631,7 @@ function getSignatureAlgorithmName(oid: string): string {
     '1.2.840.10045.4.3.3': 'ECDSA with SHA-384',
     '1.2.840.10045.4.3.4': 'ECDSA with SHA-512',
   };
-  return signatureAlgorithms[oid] || oid || 'Unknown';
+  return signatureAlgorithms[oid] || oid || trText('Unknown');
 }
 
 interface SignerInfoFields {
@@ -685,11 +726,11 @@ function detectSigScheme(
   digestOid: string
 ): SigScheme | { unsupported: string } {
   if (!signatureAlgorithmArr || signatureAlgorithmArr.length === 0) {
-    return { unsupported: 'Missing signatureAlgorithm' };
+    return { unsupported: trText('Missing signatureAlgorithm') };
   }
   const oidNode = signatureAlgorithmArr[0];
   if (!oidNode || oidNode.type !== forge.asn1.Type.OID) {
-    return { unsupported: 'Malformed signatureAlgorithm' };
+    return { unsupported: trText('Malformed signatureAlgorithm') };
   }
   const oid = forge.asn1.derToOid(oidNode.value as string);
   const implicitHash = hashNameFromOid(digestOid);
@@ -698,7 +739,11 @@ function detectSigScheme(
     case '1.2.840.113549.1.1.1':
       return implicitHash
         ? { kind: 'rsa-pkcs1', hashName: implicitHash }
-        : { unsupported: `Unsupported digest OID ${digestOid}` };
+        : {
+            unsupported: trText('Unsupported digest OID {{digestOid}}', {
+              digestOid,
+            }),
+          };
     case '1.2.840.113549.1.1.5':
       return { kind: 'rsa-pkcs1', hashName: 'SHA-1' };
     case '1.2.840.113549.1.1.11':
@@ -726,9 +771,17 @@ function detectSigScheme(
     case '1.2.840.10045.2.1':
       return implicitHash
         ? { kind: 'ecdsa', hashName: implicitHash }
-        : { unsupported: `Unsupported digest OID ${digestOid}` };
+        : {
+            unsupported: trText('Unsupported digest OID {{digestOid}}', {
+              digestOid,
+            }),
+          };
     default:
-      return { unsupported: `Unsupported signature algorithm OID ${oid}` };
+      return {
+        unsupported: trText('Unsupported signature algorithm OID {{oid}}', {
+          oid,
+        }),
+      };
   }
 }
 
@@ -763,14 +816,19 @@ function parsePssParams(paramsNode: forge.asn1.Asn1 | undefined): {
 function extractSpkiDer(
   p7: forge.pkcs7.PkcsSignedData & {
     rawCapture?: { certificates?: forge.asn1.Asn1 };
-  }
+  },
+  index: number
 ): Uint8Array | null {
   try {
     const certsNode = p7.rawCapture?.certificates;
-    if (!certsNode || !Array.isArray(certsNode.value) || !certsNode.value[0]) {
+    if (
+      !certsNode ||
+      !Array.isArray(certsNode.value) ||
+      !certsNode.value[index]
+    ) {
       return null;
     }
-    const certAsn1 = certsNode.value[0];
+    const certAsn1 = certsNode.value[index];
     if (!Array.isArray(certAsn1.value) || !certAsn1.value[0]) return null;
     const tbs = certAsn1.value[0];
     if (!Array.isArray(tbs.value)) return null;
@@ -845,7 +903,7 @@ async function verifyViaWebCrypto(
   if (!subtle) {
     return {
       status: 'unsupported',
-      reason: 'Web Crypto API not available in this context',
+      reason: trText('Web Crypto API not available in this context'),
     };
   }
 
@@ -872,8 +930,9 @@ async function verifyViaWebCrypto(
         ? { status: 'verified' }
         : {
             status: 'failed',
-            reason:
-              'RSA-PSS signature does not verify against signer public key',
+            reason: trText(
+              'RSA-PSS signature does not verify against signer public key'
+            ),
           };
     }
 
@@ -882,14 +941,14 @@ async function verifyViaWebCrypto(
       if (!curve) {
         return {
           status: 'unsupported',
-          reason: 'Unsupported ECDSA curve in signer certificate',
+          reason: trText('Unsupported ECDSA curve in signer certificate'),
         };
       }
       const p1363 = ecdsaDerToP1363(sig, curve.coordBytes);
       if (!p1363) {
         return {
           status: 'failed',
-          reason: 'Malformed ECDSA signature (could not parse r,s)',
+          reason: trText('Malformed ECDSA signature (could not parse r,s)'),
         };
       }
       const key = await subtle.importKey(
@@ -909,7 +968,9 @@ async function verifyViaWebCrypto(
         ? { status: 'verified' }
         : {
             status: 'failed',
-            reason: 'ECDSA signature does not verify against signer public key',
+            reason: trText(
+              'ECDSA signature does not verify against signer public key'
+            ),
           };
     }
 
@@ -926,21 +987,24 @@ async function verifyViaWebCrypto(
         ? { status: 'verified' }
         : {
             status: 'failed',
-            reason:
-              'RSA-PKCS1 signature does not verify against signer public key',
+            reason: trText(
+              'RSA-PKCS1 signature does not verify against signer public key'
+            ),
           };
     }
 
     return {
       status: 'unsupported',
-      reason: `Signature scheme ${scheme.kind} not implemented`,
+      reason: trText('Signature scheme {{kind}} not implemented', {
+        kind: scheme.kind,
+      }),
     };
   } catch (e) {
     return {
       status: 'unsupported',
-      reason:
-        'Web Crypto import/verify failed: ' +
-        (e instanceof Error ? e.message : String(e)),
+      reason: trText('Web Crypto import/verify failed: {{error}}', {
+        error: e instanceof Error ? e.message : String(e),
+      }),
     };
   }
 }
@@ -958,7 +1022,7 @@ async function performCryptoVerification(
   fields: SignerInfoFields | null
 ): Promise<CryptoVerificationResult> {
   if (!fields) {
-    return { status: 'failed', reason: 'Could not parse signer info' };
+    return { status: 'failed', reason: trText('Could not parse signer info') };
   }
   const byteRangeError = getByteRangeError(byteRange, pdfBytes.length);
   if (byteRangeError) {
@@ -969,7 +1033,9 @@ async function performCryptoVerification(
   if (!md) {
     return {
       status: 'unsupported',
-      reason: `Unsupported digest OID ${fields.digestOid}`,
+      reason: trText('Unsupported digest OID {{digestOid}}', {
+        digestOid: fields.digestOid,
+      }),
     };
   }
 
@@ -984,7 +1050,7 @@ async function performCryptoVerification(
   const authAttrs = fields.authAttrs;
   const signatureBytes = fields.signatureBytes;
   if (!signatureBytes) {
-    return { status: 'failed', reason: 'Empty signature bytes' };
+    return { status: 'failed', reason: trText('Empty signature bytes') };
   }
 
   const scheme = detectSigScheme(
@@ -1027,8 +1093,9 @@ async function performCryptoVerification(
     if (messageDigestAttrValue !== contentHashBytes) {
       return {
         status: 'failed',
-        reason:
-          'Content hash does not match messageDigest attribute — PDF was modified after signing',
+        reason: trText(
+          'Content hash does not match messageDigest attribute: PDF was modified after signing'
+        ),
       };
     }
 
@@ -1043,7 +1110,7 @@ async function performCryptoVerification(
     signedBytesForVerify = signedContent;
   }
 
-  if (scheme.kind === 'rsa-pkcs1') {
+  if (scheme.kind === 'rsa-pkcs1' && !hasLowRsaExponent(signerCert.publicKey)) {
     try {
       const publicKey = signerCert.publicKey as forge.pki.rsa.PublicKey;
       const md2 = createMd(fields.digestOid)!;
@@ -1055,11 +1122,12 @@ async function performCryptoVerification(
     }
   }
 
-  const spkiDer = extractSpkiDer(p7);
+  const signerIndex = (p7.certificates ?? []).indexOf(signerCert);
+  const spkiDer = signerIndex < 0 ? null : extractSpkiDer(p7, signerIndex);
   if (!spkiDer) {
     return {
       status: 'unsupported',
-      reason: 'Could not extract signer public key',
+      reason: trText('Could not extract signer public key'),
     };
   }
   return verifyViaWebCrypto(

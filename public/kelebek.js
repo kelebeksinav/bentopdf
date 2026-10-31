@@ -2177,22 +2177,24 @@
      öteki araçlar 4 başlıkta (ilk 5'i görünür, "+N araç daha" ile açılır). BentoPDF'in kendi ızgarası
      sayfada kalır (favori bölümü ve gizli kartlar için), yalnız kategori grupları gizlenir.
      Arama bizim: eş anlamlılarla ("word", "küçült", "resim"…) bütün araçlarda arar. */
+  function vtSvg(d) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + d + '"/></svg>'; }
+  /* 31 Ekim: emoji yerine aracın kendi simgesi (vtIkon); yedek olarak çizgi simge. [id, yedek simge yolu, ad, açıklama, kutu rengi, simge rengi, rozet] */
   var VT_POP = [
-    ['compress-pdf', '🗜️', 'Sıkıştır', 'Boyutu küçült', '#fdecea'],
-    ['pdf-to-word', '📄', 'PDF → Word', 'Düzenlenebilir yap', '#e8f0fe'],
-    ['merge-pdf', '➕', 'Birleştir', 'Tek PDF yap', '#eaf6ee'],
-    ['split-pdf', '✂️', 'Böl', 'Sayfaları ayır', '#fff4e0'],
-    ['pdf-to-jpg', '🖼️', 'PDF → Resim', 'JPG, PNG', '#f1eafe'],
-    ['sign-pdf', '✍️', 'İmzala', 'İmza ekle', '#e6f7f8']
+    ['compress-pdf', 'M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3M9 12h6', 'Sıkıştır', 'Boyutu küçült, e-posta ve e-Okul yüklemesine hazırla', '#e0f5ea', '#127a51', 'En çok'],
+    ['pdf-to-word', 'M6 3h9l5 5v13H6zM15 3v5h5M9 13l1.5 5 1.5-4 1.5 4L15 13', 'PDF → Word', 'Düzenlenebilir .docx dosyasına çevir', '#eaf0ff', '#2f5fd0', ''],
+    ['merge-pdf', 'M4 6h7v12H4zM13 6h7v12h-7zM11 12h2', 'Birleştir', 'Birkaç dosyayı sırasını seçerek tek PDF yap', '#f3e8ff', '#6a1b9a', ''],
+    ['split-pdf', 'M4 5h16M4 19h16M12 5v14M8 9l-3 3 3 3M16 9l3 3-3 3', 'Böl', 'Sayfa aralığı seç ya da her sayfayı ayır', '#fce7d8', '#c2410c', ''],
+    ['pdf-to-jpg', 'M4 5h16v14H4zM4 15l4-4 3 3 5-6 4 4M9 9h.01', 'PDF → Resim', 'Sayfaları JPG ya da PNG olarak kaydet', '#fff3cd', '#8a5a00', ''],
+    ['sign-pdf', 'M4 18c3-6 6-9 8-9s2 4 4 4 3-3 4-3M4 21h16', 'İmzala', 'Elle çiz ya da yükle, istediğin yere yerleştir', '#fae5e8', '#9d2235', '']
   ];
   var VT_GRUP = [
-    { ad: 'Dönüştür', e: '🔄', r: '#e8f0fe', kat: ['convert-from-pdf', 'convert-to-pdf'],
+    { ad: 'Dönüştür', e: vtSvg('M21 12a9 9 0 1 1-3-6.7M21 4v5h-5'), r: '#e8f0fe', kat: ['convert-from-pdf', 'convert-to-pdf'],
       one: ['pdf-to-word', 'pdf-to-jpg', 'jpg-to-pdf', 'pdf-to-excel', 'word-to-pdf', 'image-to-pdf', 'pdf-to-png'] },
-    { ad: 'Sayfalar', e: '📑', r: '#eaf6ee', kat: ['organize-manage'],
+    { ad: 'Sayfalar', e: vtSvg('M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z'), r: '#eaf6ee', kat: ['organize-manage'],
       one: ['merge-pdf', 'split-pdf', 'organize-pdf', 'delete-pages', 'rotate-pdf', 'extract-pages'] },
-    { ad: 'Düzenle', e: '✏️', r: '#fff4e0', kat: ['edit-annotate', 'popular-tools'],
+    { ad: 'Düzenle', e: vtSvg('M4 20h4l10-10-4-4L4 16zM13 7l4 4'), r: '#fff4e0', kat: ['edit-annotate', 'popular-tools'],
       one: ['edit-pdf', 'sign-pdf', 'add-watermark', 'page-numbers', 'form-filler', 'crop-pdf'] },
-    { ad: 'Küçült ve koru', e: '🔒', r: '#fdecea', kat: ['optimize-repair', 'secure-pdf'],
+    { ad: 'Küçült ve koru', e: vtSvg('M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7zM9 12l2 2 4-4'), r: '#fdecea', kat: ['optimize-repair', 'secure-pdf'],
       one: ['compress-pdf', 'protect-pdf', 'unlock-pdf', 'ocr-pdf', 'repair-pdf', 'remove-restrictions'] }
   ];
   var VT_TASI = { 'ocr-pdf': 3 };          /* aracın gideceği grup (VT_GRUP sırası) BentoPDF'inkinden farklıysa */
@@ -2272,7 +2274,8 @@
     var kah = document.getElementById('kb-kahraman');
     if (!kah) {
       kah = document.createElement('div'); kah.id = 'kb-kahraman';
-      kah.innerHTML = '<h1>PDF ile ne yapmak istiyorsun?</h1><p>Ücretsiz · üyelik gerekmez · dosyaların bilgisayarından çıkmaz</p>';
+      kah.innerHTML = '<span class="kb-rozet">' + vtSvg('M8 11V7a4 4 0 0 1 8 0v4M5 11h14v10H5z') + 'Dosyalar bilgisayarından çıkmaz · ücretsiz · üyelik gerekmez</span>' +
+        '<h1>PDF ile ne yapmak istiyorsun?</h1><p>Birleştir, sıkıştır, böl, çevir, imzala. Her şey tarayıcında çalışır; dosyan hiçbir sunucuya yüklenmez.</p>';
       gv.insertBefore(kah, gv.firstChild);
       if (araKap) { araKap.classList.add('kb-ara-kap'); kah.appendChild(araKap); }
       if (ara) ara.setAttribute('placeholder', 'Ne yapmak istiyorsun? (ör. word, küçült)');
@@ -2280,7 +2283,8 @@
     var pop = document.getElementById('kb-populer');
     if (!pop) { pop = document.createElement('div'); pop.id = 'kb-populer'; gv.insertBefore(pop, izgara); }
     pop.innerHTML = VT_POP.filter(function (p) { return A.l[p[0]]; }).map(function (p) {
-      return vtBag(A.l[p[0]], 'kb-pop', '<span class="kb-pop-ik" style="background:' + p[4] + '">' + p[1] + '</span><b>' + p[2] + '</b><small>' + p[3] + '</small>');
+      var ik = A.l[p[0]].ik ? A.l[p[0]].ik.replace('<span class="kb-ik">', '') .replace(/<\/span>$/, '') : vtSvg(p[1]);
+      return vtBag(A.l[p[0]], 'kb-pop', '<span class="kb-pop-ik" style="background:' + p[4] + ';color:' + p[5] + '">' + ik + '</span>' + (p[6] ? '<span class="kb-pop-roz">' + p[6] + '</span>' : '') + '<b>' + p[2] + '</b><small>' + p[3] + '</small>');
     }).join('');
     var sonuc = document.getElementById('kb-sonuc-ara');
     if (!sonuc) { sonuc = document.createElement('div'); sonuc.id = 'kb-sonuc-ara'; gv.insertBefore(sonuc, izgara); }
@@ -2390,7 +2394,7 @@
     var devam = (tek && uz === 'pdf') ? '<p class="kb-bas">Bu dosyayla devam et</p><div class="kb-sn-devam">' + SN_DEVAM.filter(function (d) { return d[0] !== buSayfa; }).slice(0, 4).map(function (d) {
       return '<button type="button" data-kbsndevam="' + d[0] + '"><span>' + d[1] + '</span>' + d[2] + '</button>'; }).join('') + '</div>' : '';
     ek.innerHTML = '<div class="kb-sn-ic"><button type="button" class="kb-sn-kapat" data-kbsnkapat aria-label="Kapat">✕</button>' +
-      '<div class="kb-sn-tik">✓</div><h2>' + tur[0] + '</h2><p class="kb-sn-alt">İndirme kendiliğinden başlamadıysa aşağıdaki düğmeye bas.</p>' +
+      '<div class="kb-sn-tik">✓</div><div class="kb-sn-adim"><span>Dosyalar</span><em>›</em><span>İşlendi</span><em>›</em><span>İndir</span></div><h2>' + tur[0] + '</h2><p class="kb-sn-alt">İndirme kendiliğinden başlamadıysa aşağıdaki düğmeye bas.</p>' +
       dosyalar + devam + '<button type="button" class="kb-sn-baska" data-kbsnyeni>+ Başka bir dosyayla devam et</button></div>';
     ek.classList.add('acik'); document.documentElement.classList.add('kb-sonuc-acik');
     try { ek.scrollTop = 0; ek.querySelector('.kb-sn-indir').focus({ preventScroll: true }); } catch (e) {}
@@ -2496,7 +2500,7 @@
     if (ilk.kart && document.body.contains(ilk.kart)) return ilk.kart;
     var k = document.createElement('div'); k.id = 'kb-ilerle'; k.setAttribute('role', 'status'); k.setAttribute('aria-live', 'polite');
     var sahne = document.querySelector('#loader-modal .kbk-bekle');
-    k.innerHTML = '<div class="kb-il-sahne"></div><div class="kb-il-sag"><div class="kb-il-ust"><b class="kb-il-yazi"></b><span class="kb-il-yuzde">%0</span></div>' +
+    k.innerHTML = '<div class="kb-il-sahne"></div><div class="kb-il-sag"><div class="kb-il-adim"><span class="ok">Dosyalar</span><em>›</em><span class="simdi">İşleniyor</span><em>›</em><span>İndir</span></div><div class="kb-il-ust"><b class="kb-il-yazi"></b><span class="kb-il-yuzde">%0</span></div>' +
       '<div class="kb-il-cubuk"><i></i></div><small class="kb-il-alt"></small></div>';
     if (sahne) k.querySelector('.kb-il-sahne').appendChild(sahne.cloneNode(true));
     var yer = document.getElementById('file-display-area') || document.getElementById('drop-zone');

@@ -1003,7 +1003,7 @@
 "Creating ZIP archive...": "ZIP arşivi hazırlanıyor...",
 "Creating ZIP file...": "ZIP dosyası hazırlanıyor...",
 "Crop": "Kırp",
-"Crop complete! Your download has started.": "Kırpma tamam. İndirme başladı.",
+"Crop complete! Your download has started.": "Kırpma tamam. Dosyan hazır.",
 "Custom Zoom": "Özel yakınlık",
 "Decrypt": "Şifreyi Çöz",
 "Decrypting PDF...": "PDF şifresi çözülüyor...",
@@ -1192,8 +1192,8 @@
 "PDF converted to SVG successfully!": "PDF, SVG'ye dönüştürüldü.",
 "PDF converted to greyscale successfully!": "PDF gri tonlamaya çevrildi.",
 "PDF created successfully!": "PDF hazırlandı.",
-"PDF decrypted successfully! Your download has started.": "PDF şifresi çözüldü. İndirme başladı.",
-"PDF has been sanitized and downloaded.": "PDF temizlendi ve indirildi.",
+"PDF decrypted successfully! Your download has started.": "PDF şifresi çözüldü. Dosyan hazır.",
+"PDF has been sanitized and downloaded.": "PDF temizlendi. Dosyan hazır.",
 "PDF organized successfully!": "PDF düzenlendi.",
 "PDF restrictions removed successfully! The file is now fully editable and printable.": "PDF kısıtlamaları kaldırıldı. Dosya artık düzenlenebilir ve yazdırılabilir.",
 "PDF split successfully!": "PDF bölündü.",
@@ -1326,7 +1326,7 @@
 "Scanner effect applied successfully!": "Tarayıcı efekti uygulandı.",
 "Search languages...": "Dil ara...",
 "Set or change user permissions on a PDF.": "PDF'teki kullanıcı izinlerini ayarlayın ya da değiştirin.",
-"Signed PDF downloaded successfully!": "İmzalı PDF indirildi.",
+"Signed PDF downloaded successfully!": "İmzalı PDF hazır.",
 "Signed PDF saved successfully!": "İmzalı PDF kaydedildi.",
 "Skip this file": "Bu dosyayı atla",
 "Some files were skipped because they are not supported images.": "Bazı dosyalar desteklenen resim olmadığı için atlandı.",
@@ -1391,7 +1391,7 @@
 "XML Files": "XML dosyaları",
 "XPS Files": "XPS dosyaları",
 "You cannot delete the last page of the document.": "Belgenin son sayfası silinemez.",
-"Your PDF has been cropped and the download has started.": "PDF'iniz kırpıldı, indirme başladı.",
+"Your PDF has been cropped and the download has started.": "PDF'iniz kırpıldı. Dosyan hazır.",
 "Your PDF has been posterized.": "PDF'iniz poster boyutuna bölündü.",
 "Your workflow needs at least one input node and one output node to run.": "İş akışının çalışması için en az bir giriş ve bir çıkış düğümü gerekir.",
 "ZIP archive created successfully!": "ZIP arşivi oluşturuldu.",
@@ -1408,7 +1408,7 @@
 ],
 [
 "^The PDF was downloaded, but these steps could not be completed: (.+?)\\. The content they cover may still be in the file\\.$",
-"PDF indirildi, ancak şu adımlar tamamlanamadı: $1. Bu adımların kapsadığı içerik dosyada kalmış olabilir."
+"PDF hazırlandı, ancak şu adımlar tamamlanamadı: $1. Bu adımların kapsadığı içerik dosyada kalmış olabilir."
 ],
 [
 "^Failed to timestamp PDF: (.+?)  Please try a different TSA server or check your internet connection\\.$",
@@ -2341,7 +2341,8 @@
   /* ---------------- 7) Sonuç ekranı: büyük "İndir" düğmesi (28 Ekim 2026) ----------------
      BentoPDF sonucu yalnız kendiliğinden indiriyordu; tarayıcı ya da kurum ağı bu indirmeyi
      engelleyince kullanıcı hiçbir şey görmüyordu. Artık her indirmede tam sayfa bir sonuç ekranı
-     açılır: dosya adı ve boyutu, büyük İndir düğmesi (kullanıcının kendi tıklaması; engellenmez),
+     açılır: dosya adı ve boyutu, büyük İndir düğmesi (kullanıcının kendi tıklaması; engellenmez). 4 Kasım: kendiliğinden
+     indirme kaldırıldı; dosya yalnız bu düğmeyle iner (iki kez inmesin diye).
      Baştan başla ve PDF sonuçlarında "Bu dosyayla devam et" (dosya sıradaki araca kendiliğinden yüklenir).
      Dosya cihazdan çıkmaz: yalnız bu tarayıcının belleğinde ve devam için kısa süre IndexedDB'de durur. */
   var SN_BLOB = {}, SN_SIRA = [], snListe = [], snAn = 0;
@@ -2355,8 +2356,12 @@
     var asilTik = HTMLAnchorElement.prototype.click;
     HTMLAnchorElement.prototype.click = function () {
       try {
-        if (this.hasAttribute('download') && !this.hasAttribute('data-kbsn') && /^blob:/.test(this.href) && SN_BLOB[this.href])
+        /* 4 Kasım 2026: kendiliğinden indirme YOK; dosya yalnız sonuç ekranındaki İndir düğmesiyle iner
+           (eskiden hem iniyor hem ekran açılıyordu; düğmeye basınca ikinci kez iniyordu) */
+        if (this.hasAttribute('download') && !this.hasAttribute('data-kbsn') && /^blob:/.test(this.href) && SN_BLOB[this.href]) {
           snEkle(SN_BLOB[this.href], this.getAttribute('download') || 'dosya');
+          return;
+        }
       } catch (e) {}
       return asilTik.apply(this, arguments);
     };
@@ -2394,7 +2399,7 @@
     var devam = (tek && uz === 'pdf') ? '<p class="kb-bas">Bu dosyayla devam et</p><div class="kb-sn-devam">' + SN_DEVAM.filter(function (d) { return d[0] !== buSayfa; }).slice(0, 4).map(function (d) {
       return '<button type="button" data-kbsndevam="' + d[0] + '"><span>' + d[1] + '</span>' + d[2] + '</button>'; }).join('') + '</div>' : '';
     ek.innerHTML = '<div class="kb-sn-ic"><button type="button" class="kb-sn-kapat" data-kbsnkapat aria-label="Kapat">✕</button>' +
-      '<div class="kb-sn-tik">✓</div><div class="kb-sn-adim"><span>Dosyalar</span><em>›</em><span>İşlendi</span><em>›</em><span>İndir</span></div><h2>' + tur[0] + '</h2><p class="kb-sn-alt">İndirme kendiliğinden başlamadıysa aşağıdaki düğmeye bas.</p>' +
+      '<div class="kb-sn-tik">✓</div><div class="kb-sn-adim"><span>Dosyalar</span><em>›</em><span>İşlendi</span><em>›</em><span>İndir</span></div><h2>' + tur[0] + '</h2><p class="kb-sn-alt">Dosya henüz inmedi; indirmek için düğmeye bas. Her şey bu cihazda kaldı.</p>' +
       dosyalar + devam + '<button type="button" class="kb-sn-baska" data-kbsnyeni>+ Başka bir dosyayla devam et</button></div>';
     ek.classList.add('acik'); document.documentElement.classList.add('kb-sonuc-acik');
     try { ek.scrollTop = 0; ek.querySelector('.kb-sn-indir').focus({ preventScroll: true }); } catch (e) {}

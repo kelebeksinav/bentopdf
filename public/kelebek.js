@@ -2188,13 +2188,13 @@
     ['sign-pdf', 'M4 18c3-6 6-9 8-9s2 4 4 4 3-3 4-3M4 21h16', 'İmzala', 'Elle çiz ya da yükle, istediğin yere yerleştir', '#fae5e8', '#9d2235', '']
   ];
   var VT_GRUP = [
-    { ad: 'Dönüştür', e: vtSvg('M21 12a9 9 0 1 1-3-6.7M21 4v5h-5'), r: '#e8f0fe', kat: ['convert-from-pdf', 'convert-to-pdf'],
+    { ad: 'Dönüştür', e: vtSvg('M21 12a9 9 0 1 1-3-6.7M21 4v5h-5'), r: '#e8f0fe', c: '#2f5fd0', kat: ['convert-from-pdf', 'convert-to-pdf'],
       one: ['pdf-to-word', 'pdf-to-jpg', 'jpg-to-pdf', 'pdf-to-excel', 'word-to-pdf', 'image-to-pdf', 'pdf-to-png'] },
-    { ad: 'Sayfalar', e: vtSvg('M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z'), r: '#eaf6ee', kat: ['organize-manage'],
+    { ad: 'Sayfalar', e: vtSvg('M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z'), r: '#eaf6ee', c: '#127a51', kat: ['organize-manage'],
       one: ['merge-pdf', 'split-pdf', 'organize-pdf', 'delete-pages', 'rotate-pdf', 'extract-pages'] },
-    { ad: 'Düzenle', e: vtSvg('M4 20h4l10-10-4-4L4 16zM13 7l4 4'), r: '#fff4e0', kat: ['edit-annotate', 'popular-tools'],
+    { ad: 'Düzenle', e: vtSvg('M4 20h4l10-10-4-4L4 16zM13 7l4 4'), r: '#fff4e0', c: '#9a5b00', kat: ['edit-annotate', 'popular-tools'],
       one: ['edit-pdf', 'sign-pdf', 'add-watermark', 'page-numbers', 'form-filler', 'crop-pdf'] },
-    { ad: 'Küçült ve koru', e: vtSvg('M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7zM9 12l2 2 4-4'), r: '#fdecea', kat: ['optimize-repair', 'secure-pdf'],
+    { ad: 'Küçült ve koru', e: vtSvg('M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7zM9 12l2 2 4-4'), r: '#fdecea', c: '#b3261e', kat: ['optimize-repair', 'secure-pdf'],
       one: ['compress-pdf', 'protect-pdf', 'unlock-pdf', 'ocr-pdf', 'repair-pdf', 'remove-restrictions'] }
   ];
   var VT_TASI = { 'ocr-pdf': 3 };          /* aracın gideceği grup (VT_GRUP sırası) BentoPDF'inkinden farklıysa */
@@ -2294,7 +2294,7 @@
     gr.innerHTML = '<p class="kb-bas">Tüm araçlar <span>' + A.sira.length + ' araç</span></p><div class="kb-grup-izgara">' + VT_GRUP.map(function (G, g) {
       var l = dag[g]; if (!l.length) return '';
       var ilk = l.slice(0, VT_GOSTER), kalan = l.slice(VT_GOSTER);
-      return '<div class="kb-grup"><h3><i style="background:' + G.r + '">' + G.e + '</i>' + G.ad + '</h3>' +
+      return '<div class="kb-grup"><h3><i style="--g:' + G.c + ';background:' + G.r + ';color:' + G.c + '">' + G.e + '</i>' + G.ad + '</h3>' +
         ilk.map(function (id) { return vtBag(A.l[id], 'kb-grup-a', A.l[id].ik + '<span>' + vtEsc(A.l[id].ad) + '</span>'); }).join('') +
         (kalan.length ? '<div class="kb-grup-ek" hidden>' + kalan.map(function (id) { return vtBag(A.l[id], 'kb-grup-a', A.l[id].ik + '<span>' + vtEsc(A.l[id].ad) + '</span>'); }).join('') + '</div>' +
           '<button type="button" class="kb-grup-tum" data-kbek="' + kalan.length + '">+ ' + kalan.length + ' araç daha</button>' : '') + '</div>';

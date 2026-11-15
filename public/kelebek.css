@@ -288,12 +288,14 @@ html.kb-gece .kbk-cubuk { background: #2a3344; }
 .kbk-bekle .kbk-buhar path:nth-child(2){animation-delay:.7s}
 .kbk-bekle .kbk-yigin{animation:kbkyigin 3.6s steps(1) infinite}
 .kbk-bekle .kbk-lamba{animation:kbklamba 3s ease-in-out infinite}
-#kbkKanatDefs .kn-kanat{transform-origin:50px 62px;animation:kbkknKanat 1.1s ease-in-out infinite}
-#kbkKanatDefs .kn-kanat.sag{animation-name:kbkknKanatS}
-#kbkKanatDefs .kn-goz{animation:kbkkirp 4s infinite;transform-origin:center;transform-box:fill-box}
+/* 9.6.0: Kanat 3B kareleri (şerit resim, kare kare kayar) */
+.kbk-bekle .kbk-kn3-F{animation:kbkkn3F .7s steps(12) infinite}
+.kbk-bekle .kbk-kn3-L{animation:kbkkn3L 4s steps(24) infinite}
+@keyframes kbkkn3F{from{transform:translateX(0)}to{transform:translateX(-2304px)}}
+@keyframes kbkkn3L{from{transform:translateX(0)}to{transform:translateX(-6144px)}}
 @keyframes kbkilerle{0%{transform:translateX(-100%)}100%{transform:translateX(260%)}}
 @media (prefers-reduced-motion: reduce) {
-  .kbk-bekle *, #kbkKanatDefs *, .kbk-cubuk b { animation: none !important; }
+  .kbk-bekle *, .kbk-cubuk b { animation: none !important; }
   .kbk-bekle .kbk-okunan, .kbk-bekle .kbk-satir-y { stroke-dashoffset: 0; }
 }
 
